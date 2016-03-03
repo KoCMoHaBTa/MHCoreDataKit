@@ -14,6 +14,8 @@
 		303520881C88ECA400436351 /* MHCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MHCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3035208B1C88ECA400436351 /* MHCoreDataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHCoreDataKit.h; sourceTree = "<group>"; };
 		3035208D1C88ECA400436351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		303520AE1C88ED8C00436351 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		303520AF1C88ED8C00436351 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +32,8 @@
 		3035207E1C88ECA400436351 = {
 			isa = PBXGroup;
 			children = (
+				303520AF1C88ED8C00436351 /* README.md */,
+				303520AE1C88ED8C00436351 /* LICENSE.md */,
 				3035208A1C88ECA400436351 /* MHCoreDataKit */,
 				303520891C88ECA400436351 /* Products */,
 			);
