@@ -17,4 +17,11 @@ public extension NSManagedObjectContext {
         
         self.persistentStoreCoordinator = coordinator
     }
+    
+    public convenience init(concurrencyType: NSManagedObjectContextConcurrencyType, perentContext: NSManagedObjectContext) {
+        
+        self.init(concurrencyType: concurrencyType)
+        
+        self.parentContext = perentContext
+    }
 }
