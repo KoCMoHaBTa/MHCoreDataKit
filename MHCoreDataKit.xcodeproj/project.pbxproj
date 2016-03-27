@@ -10,6 +10,9 @@
 		3035208C1C88ECA400436351 /* MHCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3035208B1C88ECA400436351 /* MHCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		303520D91C88EE9E00436351 /* MHCoreDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */; };
 		303520DB1C88EE9E00436351 /* MHCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303520881C88ECA400436351 /* MHCoreDataKit.framework */; };
+		30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */; };
+		30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */; };
+		30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,10 @@
 		303520D61C88EE9E00436351 /* MHCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MHCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHCoreDataKitTests.swift; sourceTree = "<group>"; };
 		303520DA1C88EE9E00436351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MHCoreDataKit.swift; sourceTree = "<group>"; };
+		30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectModel.swift; sourceTree = "<group>"; };
+		30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
+		30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				3035208B1C88ECA400436351 /* MHCoreDataKit.h */,
+				30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */,
+				30F1D4A51C89DA4B004FEBE5 /* Extensions */,
 				3035208D1C88ECA400436351 /* Info.plist */,
 			);
 			path = MHCoreDataKit;
@@ -88,6 +97,16 @@
 				303520DA1C88EE9E00436351 /* Info.plist */,
 			);
 			path = MHCoreDataKitTests;
+			sourceTree = "<group>";
+		};
+		30F1D4A51C89DA4B004FEBE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */,
+				30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */,
+				30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */,
+				30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */,
+				30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +334,7 @@
 		303520911C88ECA400436351 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -322,12 +345,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KoCMoHaBTa.MHCoreDataKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		303520921C88ECA400436351 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -382,6 +407,7 @@
 				303520921C88ECA400436351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		303520DE1C88EE9E00436351 /* Build configuration list for PBXNativeTarget "MHCoreDataKitTests" */ = {
 			isa = XCConfigurationList;
@@ -390,6 +416,7 @@
 				303520E01C88EE9E00436351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
