@@ -13,11 +13,9 @@ public extension NSManagedObject {
     
     convenience init(model: NSManagedObjectModel, context: NSManagedObjectContext? = nil) throws {
         
-        let entityClassName: String = NSStringFromClass(self.dynamicType)
-        
-        guard let entityDescription = model.entitiesByClassName[entityClassName] else {
+        guard let entityDescription = model.entityByClass(self.dynamicType) else {
             
-            throw Error.General("Unable to find entity for class name: \(entityClassName)")
+            throw Error.General("Unable to find entity for class: \(self.dynamicType)")
         }
         
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)

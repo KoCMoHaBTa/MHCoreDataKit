@@ -10,6 +10,11 @@
 		3035208C1C88ECA400436351 /* MHCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3035208B1C88ECA400436351 /* MHCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		303520D91C88EE9E00436351 /* MHCoreDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */; };
 		303520DB1C88EE9E00436351 /* MHCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303520881C88ECA400436351 /* MHCoreDataKit.framework */; };
+		30DF3A741CA7EEB400E6068A /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A701CA7EEB400E6068A /* Company.swift */; };
+		30DF3A751CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A711CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld */; };
+		30DF3A761CA7EEB400E6068A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A731CA7EEB400E6068A /* Person.swift */; };
+		30DF3A781CA7F5C100E6068A /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */; };
+		30DF3A7A1CA7F7CF00E6068A /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */; };
 		30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */; };
 		30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */; };
 		30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */; };
@@ -34,6 +39,10 @@
 		303520D61C88EE9E00436351 /* MHCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MHCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHCoreDataKitTests.swift; sourceTree = "<group>"; };
 		303520DA1C88EE9E00436351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30DF3A701CA7EEB400E6068A /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		30DF3A721CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MHCoreDataKitTests.xcdatamodel; sourceTree = "<group>"; };
+		30DF3A731CA7EEB400E6068A /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
 		30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MHCoreDataKit.swift; sourceTree = "<group>"; };
 		30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectModel.swift; sourceTree = "<group>"; };
 		30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
@@ -94,6 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */,
+				30DF3A711CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld */,
+				30DF3A731CA7EEB400E6068A /* Person.swift */,
+				30DF3A701CA7EEB400E6068A /* Company.swift */,
 				303520DA1C88EE9E00436351 /* Info.plist */,
 			);
 			path = MHCoreDataKitTests;
@@ -105,6 +117,7 @@
 				30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */,
 				30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */,
 				30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */,
+				30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,7 +232,9 @@
 			files = (
 				30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */,
 				30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */,
+				30DF3A781CA7F5C100E6068A /* NSEntityDescription.swift in Sources */,
 				30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */,
+				30DF3A7A1CA7F7CF00E6068A /* NSManagedObjectContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +242,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DF3A751CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld in Sources */,
 				303520D91C88EE9E00436351 /* MHCoreDataKitTests.swift in Sources */,
+				30DF3A761CA7EEB400E6068A /* Person.swift in Sources */,
+				30DF3A741CA7EEB400E6068A /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +437,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		30DF3A711CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				30DF3A721CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodel */,
+			);
+			currentVersion = 30DF3A721CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodel */;
+			path = MHCoreDataKitTests.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3035207F1C88ECA400436351 /* Project object */;
 }

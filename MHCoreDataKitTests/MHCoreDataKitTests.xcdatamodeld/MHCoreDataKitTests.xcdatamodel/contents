@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 4.3">
+    <entity name="Company" representedClassName=".Company" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="company" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName=".Person" syncable="YES">
+        <attribute name="adssaa" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="coleagues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="coleagues" inverseEntity="Person" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="employees" inverseEntity="Company" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Company" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="135"/>
+    </elements>
+</model>

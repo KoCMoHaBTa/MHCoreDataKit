@@ -11,6 +11,22 @@ import CoreData
 
 public extension NSManagedObjectModel {
     
+    convenience init?(name: String, bundle: NSBundle = NSBundle.mainBundle()) {
+        
+        guard
+        let url = bundle.URLForResource(name, withExtension: "momd")
+        else {
+                
+            return nil
+        }
+        
+        self.init(contentsOfURL: url)
+    }
+}
+
+public extension NSManagedObjectModel {
+    
+    //this should be cached for performance
     var entitiesByClassName: [String: NSEntityDescription] {
         
         get {
@@ -22,5 +38,15 @@ public extension NSManagedObjectModel {
                 return result
             })
         }
+    }
+    
+    func entityByClassName(entityClassName: String) -> NSEntityDescription? {
+        
+        return self.entitiesByClassName[entityClassName]
+    }
+    
+    func entityByClass<C where C: NSManagedObject>(entityClass: C.Type) -> NSEntityDescription? {
+        
+        return self.entityByClassName(String(reflecting: entityClass))
     }
 }

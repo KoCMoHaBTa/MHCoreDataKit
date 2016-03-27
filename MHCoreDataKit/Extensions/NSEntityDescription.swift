@@ -11,20 +11,13 @@ import CoreData
 
 public extension NSEntityDescription {
     
-    class func entityForClassName(entityClassName: String, model: NSManagedObjectModel) -> NSEntityDescription? {
-        
-        return model.entitiesByClassName[entityClassName]
-    }
-    
-    class func entityForClassName(entityClassName: String, coordinator: NSPersistentStoreCoordinator) -> NSEntityDescription? {
-        
-        return self.entityForClassName(entityClassName, model: coordinator.managedObjectModel)
-    }
-    
     class func entityForClassName(entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
         
-        guard let coordinator = context.persistentStoreCoordinator else { return nil }
+        return context.persistentStoreCoordinator?.managedObjectModel.entityByClassName(entityClassName)
+    }
+    
+    class func entityForClass<C where C: NSManagedObject>(entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? {
         
-        return self.entityForClassName(entityClassName, coordinator: coordinator)
+        return self.entityForClassName(String(reflecting: entityClass), context: context)
     }
 }
