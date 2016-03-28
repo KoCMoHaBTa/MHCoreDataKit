@@ -20,4 +20,14 @@ public extension NSManagedObject {
         
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }
+    
+    convenience init(context: NSManagedObjectContext, insert: Bool = true) throws {
+        
+        guard let model = context.persistentStoreCoordinator?.managedObjectModel else {
+            
+            throw Error.General("Attempting to create an instance of \(self.dynamicType) with invalid context \(context)\nReson: Missing persistentStoreCoordinator in context")
+        }
+        
+        try self.init(model: model, context: insert ? context : nil)
+    }
 }
