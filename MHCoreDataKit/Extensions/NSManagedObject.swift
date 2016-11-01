@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public extension NSManagedObject {
+extension NSManagedObject {
     
     /**
          Initializes the receiver and inserts it into the specified managed object context.
@@ -22,14 +22,15 @@ public extension NSManagedObject {
          - returns: An instance of the receiver.
      */
     
-    convenience init(model: NSManagedObjectModel, context: NSManagedObjectContext? = nil) throws {
+    public convenience init(model: NSManagedObjectModel, context: NSManagedObjectContext? = nil) throws {
         
-        guard let entityDescription = model.entityByClass(self.dynamicType) else {
+        guard let entityDescription = model.entityByClass(type(of: self)) else {
             
-            throw Error.General("Unable to find entity for class: \(self.dynamicType)")
+            
+            throw Error(message: "Unable to find entity for class: \(type(of: self))")
         }
         
-        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+        self.init(entity: entityDescription, insertInto: context)
     }
     
     /**
@@ -43,22 +44,27 @@ public extension NSManagedObject {
          - returns: An instance of the receiver.
      */
     
-    convenience init(context: NSManagedObjectContext, insert: Bool = true) throws {
+    public convenience init(context: NSManagedObjectContext, insert: Bool) throws {
         
         guard let model = context.persistentStoreCoordinator?.managedObjectModel else {
             
-            throw Error.General("Attempting to create an instance of \(self.dynamicType) with invalid context \(context)\nReson: Missing persistentStoreCoordinator in context")
+            throw Error(message: "Attempting to create an instance of \(type(of: self)) with invalid context \(context)\nReson: Missing persistentStoreCoordinator in context")
         }
         
         try self.init(model: model, context: insert ? context : nil)
     }
+    
+    public convenience init(insertingInto context: NSManagedObjectContext) throws {
+        
+        try self.init(context: context, insert: true)
+    }
 }
 
-public extension NSManagedObject {
+extension NSManagedObject {
     
     ///By default convention, this is the name of the class. Override in order to provide custom name.
-    class func entityName() -> String {
+    open class func entityName() -> String {
         
-        return String(self)
+        return String(describing: self)
     }
 }

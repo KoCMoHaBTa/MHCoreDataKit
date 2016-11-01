@@ -17,8 +17,8 @@
 		30DF3A781CA7F5C100E6068A /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */; };
 		30DF3A7A1CA7F7CF00E6068A /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */; };
 		30DF3A7D1CA7FE1B00E6068A /* EntityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A7C1CA7FE1B00E6068A /* EntityObserver.swift */; };
-		30DF3A7F1CA7FE4300E6068A /* ContextStateChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A7E1CA7FE4300E6068A /* ContextStateChange.swift */; };
-		30DF3A811CA7FE4C00E6068A /* EntityStateChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A801CA7FE4C00E6068A /* EntityStateChange.swift */; };
+		30DF3A7F1CA7FE4300E6068A /* ContextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A7E1CA7FE4300E6068A /* ContextState.swift */; };
+		30DF3A811CA7FE4C00E6068A /* EntityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A801CA7FE4C00E6068A /* EntityState.swift */; };
 		30DF3A831CA804AF00E6068A /* EntityObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A821CA804AF00E6068A /* EntityObserverTests.swift */; };
 		30DF3A851CA8703C00E6068A /* XCTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A841CA8703C00E6068A /* XCTestExtensions.swift */; };
 		30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */; };
@@ -51,8 +51,8 @@
 		30DF3A731CA7EEB400E6068A /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
 		30DF3A7C1CA7FE1B00E6068A /* EntityObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityObserver.swift; sourceTree = "<group>"; };
-		30DF3A7E1CA7FE4300E6068A /* ContextStateChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextStateChange.swift; sourceTree = "<group>"; };
-		30DF3A801CA7FE4C00E6068A /* EntityStateChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityStateChange.swift; sourceTree = "<group>"; };
+		30DF3A7E1CA7FE4300E6068A /* ContextState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextState.swift; sourceTree = "<group>"; };
+		30DF3A801CA7FE4C00E6068A /* EntityState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityState.swift; sourceTree = "<group>"; };
 		30DF3A821CA804AF00E6068A /* EntityObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityObserverTests.swift; sourceTree = "<group>"; };
 		30DF3A841CA8703C00E6068A /* XCTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestExtensions.swift; sourceTree = "<group>"; };
 		30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MHCoreDataKit.swift; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				30DF3A7C1CA7FE1B00E6068A /* EntityObserver.swift */,
-				30DF3A7E1CA7FE4300E6068A /* ContextStateChange.swift */,
-				30DF3A801CA7FE4C00E6068A /* EntityStateChange.swift */,
+				30DF3A7E1CA7FE4300E6068A /* ContextState.swift */,
+				30DF3A801CA7FE4C00E6068A /* EntityState.swift */,
 			);
 			path = EntityObserver;
 			sourceTree = "<group>";
@@ -205,14 +205,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Milen Halachev";
 				TargetAttributes = {
 					303520871C88ECA400436351 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 					};
 					303520D51C88EE9E00436351 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -257,12 +259,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */,
-				30DF3A7F1CA7FE4300E6068A /* ContextStateChange.swift in Sources */,
+				30DF3A7F1CA7FE4300E6068A /* ContextState.swift in Sources */,
 				30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */,
 				30DF3A781CA7F5C100E6068A /* NSEntityDescription.swift in Sources */,
 				30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */,
 				30DF3A7D1CA7FE1B00E6068A /* EntityObserver.swift in Sources */,
-				30DF3A811CA7FE4C00E6068A /* EntityStateChange.swift in Sources */,
+				30DF3A811CA7FE4C00E6068A /* EntityState.swift in Sources */,
 				30DF3A7A1CA7F7CF00E6068A /* NSManagedObjectContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,8 +307,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -353,8 +357,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -374,6 +380,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -385,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -396,6 +404,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -403,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -413,6 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KoCMoHaBTa.MHCoreDataKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -424,6 +435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KoCMoHaBTa.MHCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -435,6 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.KoCMoHaBTa.MHCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -9,29 +9,29 @@
 import Foundation
 import CoreData
 
-public extension NSManagedObjectModel {
+extension NSManagedObjectModel {
     
-    convenience init?(name: String, bundle: NSBundle = NSBundle.mainBundle()) {
+    public convenience init?(name: String, bundle: Bundle = .main) {
         
         guard
-        let url = bundle.URLForResource(name, withExtension: "momd")
+        let url = bundle.url(forResource: name, withExtension: "momd")
         else {
                 
             return nil
         }
         
-        self.init(contentsOfURL: url)
+        self.init(contentsOf: url)
     }
 }
 
-public extension NSManagedObjectModel {
+extension NSManagedObjectModel {
     
-    //this should be cached for performance
-    var entitiesByClassName: [String: NSEntityDescription] {
+    //NOTE: this should be cached for performance
+    open var entitiesByClassName: [String: NSEntityDescription] {
         
         get {
             
-            return self.entities.reduce([:], combine: { (result, entity) -> [String: NSEntityDescription] in
+            return self.entities.reduce([:], { (result, entity) -> [String: NSEntityDescription] in
                 
                 var result = result
                 result[entity.managedObjectClassName] = entity
@@ -40,12 +40,12 @@ public extension NSManagedObjectModel {
         }
     }
     
-    func entityByClassName(entityClassName: String) -> NSEntityDescription? {
+    open func entityByClassName(_ entityClassName: String) -> NSEntityDescription? {
         
         return self.entitiesByClassName[entityClassName]
     }
     
-    func entityByClass<C where C: NSManagedObject>(entityClass: C.Type) -> NSEntityDescription? {
+    open func entityByClass<C>(_ entityClass: C.Type) -> NSEntityDescription? where C: NSManagedObject {
         
         return self.entityByClassName(String(reflecting: entityClass))
     }

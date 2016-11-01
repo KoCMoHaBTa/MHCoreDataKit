@@ -9,9 +9,26 @@
 import Foundation
 import CoreData
 
-public enum Error: ErrorType {
+public struct Error: RawRepresentable, Swift.Error {
     
-    case General(String)
+    public let message: String
+    
+    public init(message: String) {
+        
+        self.message = message
+    }
+    
+    //MARK: - RawRepresentable
+    
+    public var rawValue: String {
+        
+        return self.message
+    }
+    
+    public init?(rawValue: String) {
+        
+        self.message = rawValue
+    }
 }
 
 
@@ -56,14 +73,18 @@ public enum Error: ErrorType {
 ////    }
 //}
 
-public class FetchRequest<Entity, Result where Entity: NSManagedObject>: NSFetchRequest {
+open class FetchRequest<Entity, Result>: NSFetchRequest<NSFetchRequestResult> where Entity: NSManagedObject {
     
     public override init() {
         
         super.init()
     }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    public override var entityName: String? {
+    open override var entityName: String? {
     
         return Entity.entityName()
     }

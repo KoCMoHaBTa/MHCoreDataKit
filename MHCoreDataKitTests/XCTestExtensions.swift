@@ -11,12 +11,12 @@ import XCTest
 
 extension XCTestCase {
     
-    public func performExpectation(description: String = "XCTestCase Default Expectation", timeout: NSTimeInterval = 10, handler: (expectation: XCTestExpectation!) -> Void) {
+    public func performExpectation(description: String = "XCTestCase Default Expectation", timeout: TimeInterval = 2, handler: (_ expectation: XCTestExpectation) -> Void) {
         
-        let expectation = self.expectationWithDescription(description)
-        handler(expectation: expectation)
+        let expectation = self.expectation(description: description)
+        handler(expectation)
         
-        self.waitForExpectationsWithTimeout(timeout, handler: { (error) -> Void in
+        self.waitForExpectations(timeout: timeout, handler: { (error) -> Void in
             
             XCTAssertNil(error, "Expectation Error")
         })
@@ -56,7 +56,7 @@ extension XCTestExpectation {
         return true
     }
     
-    public func addConditions(conditions: [String]) {
+    public func add(conditions: [String]) {
         
         conditions.forEach { (condition) -> () in
             
@@ -64,7 +64,7 @@ extension XCTestExpectation {
         }
     }
     
-    public func fulfillCondition(condition: String) {
+    public func fulfill(condition: String) {
         
         XCTAssertNotNil(self.conditions[condition], "Cannot fulfil a non-exiting condition: \"\(condition)\"")
         

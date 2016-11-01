@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-public extension NSEntityDescription {
+extension NSEntityDescription {
     
-    class func entityForClassName(entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
+    open class func entityForClassName(_ entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
         
         return context.persistentStoreCoordinator?.managedObjectModel.entityByClassName(entityClassName)
     }
     
-    class func entityForClass<C where C: NSManagedObject>(entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? {
+    open class func entityForClass<C>(_ entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? where C: NSManagedObject {
         
         return self.entityForClassName(String(reflecting: entityClass), context: context)
     }

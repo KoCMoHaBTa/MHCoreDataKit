@@ -8,10 +8,10 @@
 
 import Foundation
 
-public enum EntityStateChange {
+public enum EntityState {
     
-    case Inserted
-    case Updated
-    case Deleted
-    case Any
+    case inserted
+    case updated
+    case deleted
+    case any
 }

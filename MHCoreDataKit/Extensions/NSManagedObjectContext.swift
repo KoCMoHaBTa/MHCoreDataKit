@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public extension NSManagedObjectContext {
+extension NSManagedObjectContext {
     
     public convenience init(concurrencyType: NSManagedObjectContextConcurrencyType, coordinator: NSPersistentStoreCoordinator) {
         
@@ -22,6 +22,6 @@ public extension NSManagedObjectContext {
         
         self.init(concurrencyType: concurrencyType)
         
-        self.parentContext = perentContext
+        self.parent = perentContext
     }
 }

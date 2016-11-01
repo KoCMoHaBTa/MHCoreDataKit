@@ -14,7 +14,7 @@ import XCTest
 class EntityObserverTests: XCTestCase {
     
     private var context: NSManagedObjectContext!
-    private let managedObjectSorter: (NSManagedObject, NSManagedObject) -> Bool = { $0.objectID.URIRepresentation().absoluteString > $1.objectID.URIRepresentation().absoluteString }
+    private let managedObjectSorter: (NSManagedObject, NSManagedObject) -> Bool = { $0.objectID.uriRepresentation().absoluteString > $1.objectID.uriRepresentation().absoluteString }
     
     override func setUp() {
         
@@ -23,10 +23,10 @@ class EntityObserverTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         //setup a simple stack
-        let model = NSManagedObjectModel(name: "MHCoreDataKitTests", bundle: NSBundle(forClass: self.dynamicType))!
+        let model = NSManagedObjectModel(name: "MHCoreDataKitTests", bundle: Bundle(for: type(of: self)))!
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-        try! coordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
-        self.context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType, coordinator: coordinator)
+        try! coordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType, coordinator: coordinator)
     }
     
     override func tearDown() {
@@ -45,13 +45,13 @@ class EntityObserverTests: XCTestCase {
             var insertedPersons: [Person] = []
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
-            observer.observe(.Inserted) { (inserted, updated, deleted) in
+            observer.observeChangesFor(.inserted) { (inserted, updated, deleted) in
                 
                 XCTAssertTrue(inserted.count == insertedPersons.count)
                 XCTAssertTrue(updated.isEmpty)
                 XCTAssertTrue(deleted.isEmpty)
                 
-                XCTAssertEqual(insertedPersons.sort(self.managedObjectSorter), inserted.sort(self.managedObjectSorter))
+                XCTAssertEqual(insertedPersons.sorted(by: self.managedObjectSorter), inserted.sorted(by: self.managedObjectSorter))
                 
                 expectation.fulfill()
                 observer = nil
@@ -59,17 +59,17 @@ class EntityObserverTests: XCTestCase {
             
             do {
                 
-                let p1 = try Person(context: self.context)
+                let p1 = try Person(context: self.context, insert: true)
                 p1.firstName = "Genadi"
                 p1.lastName = "Gredoredov"
                 p1.age = 27
                 
-                let p2 = try Person(context: self.context)
+                let p2 = try Person(insertingInto: self.context)
                 p2.firstName = "Kuncho"
                 p2.lastName = "Timelkov"
                 p2.age = 17
                 
-                let p3 = try Person(context: self.context)
+                let p3 = try Person(insertingInto: self.context)
                 p3.firstName = "Strahil"
                 p3.lastName = "Keremidkov"
                 p3.age = 21
@@ -91,13 +91,13 @@ class EntityObserverTests: XCTestCase {
         self.performExpectation { (expectation) in
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
-            observer.observe(.Updated) { (inserted, updated, deleted) in
+            observer.observeChangesFor(.updated) { (inserted, updated, deleted) in
                 
                 XCTAssertTrue(inserted.isEmpty)
                 XCTAssertTrue(updated.count == updatedPersons.count)
                 XCTAssertTrue(deleted.isEmpty)
                 
-                XCTAssertEqual(updatedPersons.sort(self.managedObjectSorter), updated.sort(self.managedObjectSorter))
+                XCTAssertEqual(updatedPersons.sorted(by: self.managedObjectSorter), updated.sorted(by: self.managedObjectSorter))
                 
                 expectation.fulfill()
                 observer = nil
@@ -105,17 +105,17 @@ class EntityObserverTests: XCTestCase {
             
             do {
                 
-                let p1 = try Person(context: self.context)
+                let p1 = try Person(insertingInto: self.context)
                 p1.firstName = "Genadi"
                 p1.lastName = "Gredoredov"
                 p1.age = 27
                 
-                let p2 = try Person(context: self.context)
+                let p2 = try Person(insertingInto: self.context)
                 p2.firstName = "Kuncho"
                 p2.lastName = "Timelkov"
                 p2.age = 17
                 
-                let p3 = try Person(context: self.context)
+                let p3 = try Person(insertingInto: self.context)
                 p3.firstName = "Strahil"
                 p3.lastName = "Keremidkov"
                 p3.age = 21
@@ -143,14 +143,14 @@ class EntityObserverTests: XCTestCase {
             var deletedPersons: [Person] = []
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
-            observer.observe(.Deleted) { (inserted, updated, deleted) in
+            observer.observeChangesFor(.deleted) { (inserted, updated, deleted) in
                 
                 print("golqm be")
                 XCTAssertTrue(inserted.isEmpty)
                 XCTAssertTrue(updated.isEmpty)
                 XCTAssertTrue(deleted.count == deletedPersons.count)
                 
-                XCTAssertEqual(deletedPersons.sort(self.managedObjectSorter), deleted.sort(self.managedObjectSorter))
+                XCTAssertEqual(deletedPersons.sorted(by: self.managedObjectSorter), deleted.sorted(by: self.managedObjectSorter))
                 
                 expectation.fulfill()
                 observer = nil
@@ -158,25 +158,25 @@ class EntityObserverTests: XCTestCase {
             
             do {
                 
-                let p1 = try Person(context: self.context)
+                let p1 = try Person(insertingInto: self.context)
                 p1.firstName = "Genadi"
                 p1.lastName = "Gredoredov"
                 p1.age = 27
                 
-                let p2 = try Person(context: self.context)
+                let p2 = try Person(insertingInto: self.context)
                 p2.firstName = "Kuncho"
                 p2.lastName = "Timelkov"
                 p2.age = 17
                 
-                let p3 = try Person(context: self.context)
+                let p3 = try Person(insertingInto: self.context)
                 p3.firstName = "Strahil"
                 p3.lastName = "Keremidkov"
                 p3.age = 21
                 
                 try self.context.save()
                 
-                self.context.deleteObject(p1)
-                self.context.deleteObject(p2)
+                self.context.delete(p1)
+                self.context.delete(p2)
                 
                 deletedPersons = [p1, p2]
                 
@@ -193,24 +193,24 @@ class EntityObserverTests: XCTestCase {
         
         self.performExpectation { (expectation) in
             
-            expectation.addConditions(["inserted \(2)", "updated \(1)", "deleted \(1)"])
+            expectation.add(conditions: ["inserted \(2)", "updated \(1)", "deleted \(1)"])
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)            
-            observer.observe(.Any, filter: { $0.age.unsignedShortValue >= 18 }, changes: { (inserted, updated, deleted) in
+            observer.observeChangesFor(.any, filter: { $0.age.uint16Value >= 18 }, changes: { (inserted, updated, deleted) in
                 
                 if !inserted.isEmpty {
                     
-                    expectation.fulfillCondition("inserted \(inserted.count)")
+                    expectation.fulfill(condition: "inserted \(inserted.count)")
                 }
                 
                 if !updated.isEmpty {
                     
-                    expectation.fulfillCondition("updated \(updated.count)")
+                    expectation.fulfill(condition: "updated \(updated.count)")
                 }
                 
                 if !deleted.isEmpty {
                     
-                    expectation.fulfillCondition("deleted \(deleted.count)")
+                    expectation.fulfill(condition: "deleted \(deleted.count)")
                 }
                 
                 if expectation.areAllConditionsFulfulled {
@@ -221,22 +221,22 @@ class EntityObserverTests: XCTestCase {
             
             do {
                 
-                let p1 = try Person(context: self.context)
+                let p1 = try Person(insertingInto: self.context)
                 p1.firstName = "Genadi"
                 p1.lastName = "Gredoredov"
                 p1.age = 27
                 
-                let p2 = try Person(context: self.context)
+                let p2 = try Person(insertingInto: self.context)
                 p2.firstName = "Kuncho"
                 p2.lastName = "Timelkov"
                 p2.age = 17
                 
-                let p3 = try Person(context: self.context)
+                let p3 = try Person(insertingInto: self.context)
                 p3.firstName = "Strahil"
                 p3.lastName = "Keremidkov"
                 p3.age = 21
                 
-                let p4 = try Person(context: self.context)
+                let p4 = try Person(insertingInto: self.context)
                 p4.firstName = "Strahil"
                 p4.lastName = "Keremidkov"
                 p4.age = 14
@@ -246,8 +246,8 @@ class EntityObserverTests: XCTestCase {
                 p2.firstName = "zelen"
                 p3.lastName = "vrat"
                 
-                self.context.deleteObject(p1)
-                self.context.deleteObject(p4)
+                self.context.delete(p1)
+                self.context.delete(p4)
                 
                 try self.context.save()
             }
