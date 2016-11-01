@@ -12,11 +12,19 @@ import CoreData
 
 class MHCoreDataKitTests: XCTestCase {
     
+    private var context: NSManagedObjectContext!
+    
     override func setUp() {
         
         super.setUp()
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        //setup a simple stack
+        let model = NSManagedObjectModel(name: "MHCoreDataKitTests", bundle: NSBundle(forClass: self.dynamicType))!
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+        try! coordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+        self.context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType, coordinator: coordinator)
         
     }
     
@@ -24,7 +32,7 @@ class MHCoreDataKitTests: XCTestCase {
         
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         
-        
+        self.context = nil
         
         super.tearDown()
     }
@@ -50,5 +58,15 @@ class MHCoreDataKitTests: XCTestCase {
         XCTAssertNotNil(try? Person(model: model))
         XCTAssertNotNil(try? Company(model: model))
         XCTAssertNil(try? _NonExistingPerson(model: model))
+        
+        let g1 = String(Person)
+        let g2 = String(reflecting: Person.self)
+        let g3 = NSStringFromClass(Person)
+        
+        let e = self.context.persistentStoreCoordinator?.managedObjectModel.entitiesByName
+        let fff = FetchRequest<Person, Person>()
+        let gay = try! self.context.executeFetchRequest(fff)
+        
+        print("gay")
     }
 }

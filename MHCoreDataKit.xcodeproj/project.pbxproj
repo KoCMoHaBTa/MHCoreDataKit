@@ -10,6 +10,7 @@
 		3035208C1C88ECA400436351 /* MHCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3035208B1C88ECA400436351 /* MHCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		303520D91C88EE9E00436351 /* MHCoreDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */; };
 		303520DB1C88EE9E00436351 /* MHCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303520881C88ECA400436351 /* MHCoreDataKit.framework */; };
+		306605121CAA9F5B00554259 /* AnotherModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 306605101CAA9F5B00554259 /* AnotherModel.xcdatamodeld */; };
 		30DF3A741CA7EEB400E6068A /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A701CA7EEB400E6068A /* Company.swift */; };
 		30DF3A751CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A711CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld */; };
 		30DF3A761CA7EEB400E6068A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF3A731CA7EEB400E6068A /* Person.swift */; };
@@ -44,6 +45,7 @@
 		303520D61C88EE9E00436351 /* MHCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MHCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHCoreDataKitTests.swift; sourceTree = "<group>"; };
 		303520DA1C88EE9E00436351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		306605111CAA9F5B00554259 /* AnotherModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnotherModel.xcdatamodel; sourceTree = "<group>"; };
 		30DF3A701CA7EEB400E6068A /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		30DF3A721CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MHCoreDataKitTests.xcdatamodel; sourceTree = "<group>"; };
 		30DF3A731CA7EEB400E6068A /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				30DF3A731CA7EEB400E6068A /* Person.swift */,
 				30DF3A701CA7EEB400E6068A /* Company.swift */,
 				303520DA1C88EE9E00436351 /* Info.plist */,
+				306605101CAA9F5B00554259 /* AnotherModel.xcdatamodeld */,
 			);
 			path = MHCoreDataKitTests;
 			sourceTree = "<group>";
@@ -201,7 +204,7 @@
 		3035207F1C88ECA400436351 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Milen Halachev";
 				TargetAttributes = {
@@ -273,6 +276,7 @@
 				303520D91C88EE9E00436351 /* MHCoreDataKitTests.swift in Sources */,
 				30DF3A761CA7EEB400E6068A /* Person.swift in Sources */,
 				30DF3A851CA8703C00E6068A /* XCTestExtensions.swift in Sources */,
+				306605121CAA9F5B00554259 /* AnotherModel.xcdatamodeld in Sources */,
 				30DF3A741CA7EEB400E6068A /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +471,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		306605101CAA9F5B00554259 /* AnotherModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				306605111CAA9F5B00554259 /* AnotherModel.xcdatamodel */,
+			);
+			currentVersion = 306605111CAA9F5B00554259 /* AnotherModel.xcdatamodel */;
+			path = AnotherModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		30DF3A711CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
