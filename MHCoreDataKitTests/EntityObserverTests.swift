@@ -13,30 +13,13 @@ import XCTest
 
 class EntityObserverTests: XCTestCase {
     
-    private var context: NSManagedObjectContext!
+    private var stack = TestStack()
+    private var context: NSManagedObjectContext {
+        
+        return self.stack.context
+    }
+    
     private let managedObjectSorter: (NSManagedObject, NSManagedObject) -> Bool = { $0.objectID.uriRepresentation().absoluteString > $1.objectID.uriRepresentation().absoluteString }
-    
-    override func setUp() {
-        
-        super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        //setup a simple stack
-        let model = NSManagedObjectModel(name: "MHCoreDataKitTests", bundle: Bundle(for: type(of: self)))!
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-        try! coordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
-        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType, coordinator: coordinator)
-    }
-    
-    override func tearDown() {
-        
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        
-        self.context = nil
-        
-        super.tearDown()
-    }
     
     func testInsert() {
         

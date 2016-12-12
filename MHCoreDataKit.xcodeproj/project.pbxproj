@@ -24,6 +24,9 @@
 		30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A61C89DA6C004FEBE5 /* MHCoreDataKit.swift */; };
 		30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */; };
 		30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */; };
+		991A8D4C1DFEF66C00B0D19F /* NSFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991A8D4B1DFEF66C00B0D19F /* NSFetchRequest.swift */; };
+		991A8D4E1DFF063D00B0D19F /* NSFetchRequestConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991A8D4D1DFF063D00B0D19F /* NSFetchRequestConfigurationTests.swift */; };
+		991A8D501DFF0AEC00B0D19F /* TestStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991A8D4F1DFF0AEC00B0D19F /* TestStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectModel.swift; sourceTree = "<group>"; };
 		30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
 		30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
+		991A8D4B1DFEF66C00B0D19F /* NSFetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchRequest.swift; sourceTree = "<group>"; };
+		991A8D4D1DFF063D00B0D19F /* NSFetchRequestConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchRequestConfigurationTests.swift; sourceTree = "<group>"; };
+		991A8D4F1DFF0AEC00B0D19F /* TestStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +124,9 @@
 				30DF3A841CA8703C00E6068A /* XCTestExtensions.swift */,
 				303520D81C88EE9E00436351 /* MHCoreDataKitTests.swift */,
 				30DF3A821CA804AF00E6068A /* EntityObserverTests.swift */,
+				991A8D4D1DFF063D00B0D19F /* NSFetchRequestConfigurationTests.swift */,
 				30DF3A711CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld */,
+				991A8D4F1DFF0AEC00B0D19F /* TestStack.swift */,
 				30DF3A731CA7EEB400E6068A /* Person.swift */,
 				30DF3A701CA7EEB400E6068A /* Company.swift */,
 				303520DA1C88EE9E00436351 /* Info.plist */,
@@ -144,6 +152,7 @@
 				30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */,
 				30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */,
 				30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */,
+				991A8D4B1DFEF66C00B0D19F /* NSFetchRequest.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -262,6 +271,7 @@
 				30DF3A7F1CA7FE4300E6068A /* ContextState.swift in Sources */,
 				30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */,
 				30DF3A781CA7F5C100E6068A /* NSEntityDescription.swift in Sources */,
+				991A8D4C1DFEF66C00B0D19F /* NSFetchRequest.swift in Sources */,
 				30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */,
 				30DF3A7D1CA7FE1B00E6068A /* EntityObserver.swift in Sources */,
 				30DF3A811CA7FE4C00E6068A /* EntityState.swift in Sources */,
@@ -273,11 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991A8D4E1DFF063D00B0D19F /* NSFetchRequestConfigurationTests.swift in Sources */,
 				30DF3A831CA804AF00E6068A /* EntityObserverTests.swift in Sources */,
 				30DF3A751CA7EEB400E6068A /* MHCoreDataKitTests.xcdatamodeld in Sources */,
 				303520D91C88EE9E00436351 /* MHCoreDataKitTests.swift in Sources */,
 				30DF3A761CA7EEB400E6068A /* Person.swift in Sources */,
 				30DF3A851CA8703C00E6068A /* XCTestExtensions.swift in Sources */,
+				991A8D501DFF0AEC00B0D19F /* TestStack.swift in Sources */,
 				306605121CAA9F5B00554259 /* AnotherModel.xcdatamodeld in Sources */,
 				30DF3A741CA7EEB400E6068A /* Company.swift in Sources */,
 			);

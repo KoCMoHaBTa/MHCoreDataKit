@@ -68,3 +68,15 @@ extension NSManagedObject {
         return String(describing: self)
     }
 }
+
+extension NSFetchRequestResult where Self: NSManagedObject {
+    
+    ///Makes a new instance of NSFetchRequest with ResultType and entityName beign the receiver
+    static func makeFetchRequest() -> NSFetchRequest<Self> {
+        
+        let entityName = self.entityName()
+        let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
+        return fetchRequest
+    }
+}
+
