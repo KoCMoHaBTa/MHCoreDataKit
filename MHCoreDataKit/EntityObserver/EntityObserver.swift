@@ -10,9 +10,8 @@ import Foundation
 import CoreData
 
 ///Observe NSManagedObjectContext changes
-open class EntityObserver<E:NSManagedObject> {
+open class EntityObserver<E: NSManagedObject> {
     
-    private let entityType: E.Type
     private let context: NSManagedObjectContext?
     private let queue: OperationQueue = OperationQueue()
     
@@ -27,9 +26,8 @@ open class EntityObserver<E:NSManagedObject> {
      
      */
     
-    public init(entityType: E.Type, context: NSManagedObjectContext? = nil) {
+    public init(context: NSManagedObjectContext? = nil) {
         
-        self.entityType = entityType
         self.context = context
     }
     

@@ -80,3 +80,13 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
 }
 
+extension NSFetchRequestResult where Self: NSManagedObject {
+    
+    ///Makes a new observer for the receiver type with a given context. 
+    ///- parameter context: The context for which to restrict observed changes or nil for any context. Default to nil.
+    static func makeObserver(with context: NSManagedObjectContext? = nil) -> EntityObserver<Self> {
+        
+        return EntityObserver<Self>(context: context)
+    }
+}
+

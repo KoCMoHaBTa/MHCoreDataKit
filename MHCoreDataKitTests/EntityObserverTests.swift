@@ -27,7 +27,7 @@ class EntityObserverTests: XCTestCase {
             
             var insertedPersons: [Person] = []
             
-            var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
+            var observer: EntityObserver! = Person.makeObserver(with: self.context)
             observer.observeChanges(for: .inserted) { (inserted, updated, deleted) in
                 
                 XCTAssertTrue(inserted.count == insertedPersons.count)
@@ -73,7 +73,7 @@ class EntityObserverTests: XCTestCase {
         
         self.performExpectation { (expectation) in
             
-            var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
+            var observer: EntityObserver! = EntityObserver<Person>(context: self.context)
             observer.observeChanges(for: .updated) { (inserted, updated, deleted) in
                 
                 XCTAssertTrue(inserted.isEmpty)
@@ -125,7 +125,7 @@ class EntityObserverTests: XCTestCase {
             
             var deletedPersons: [Person] = []
             
-            var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
+            var observer: EntityObserver! = Person.makeObserver(with: self.context)
             observer.observeChanges(for: .deleted) { (inserted, updated, deleted) in
                 
                 print("golqm be")
@@ -178,7 +178,7 @@ class EntityObserverTests: XCTestCase {
             
             expectation.add(conditions: ["inserted \(2)", "updated \(1)", "deleted \(1)"])
             
-            var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)            
+            var observer: EntityObserver! = EntityObserver<Person>(context: self.context)
             observer.observeChanges(for: .any, filter: { $0.age.uint16Value >= 18 }, handler: { (inserted, updated, deleted) in
                 
                 if !inserted.isEmpty {
