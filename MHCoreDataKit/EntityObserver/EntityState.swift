@@ -8,6 +8,7 @@
 
 import Foundation
 
+///Represent an entity change state/type
 public enum EntityState {
     
     case inserted

@@ -11,6 +11,16 @@ import CoreData
 
 extension NSManagedObjectModel {
     
+    /**
+     
+     Creates an instance of the receiver by looking up for a given name in bundle.
+     
+     - parameter name: The model name for which to lookup.
+     - parameter bundle: The bundle into which to look for the model. Default to main bundle
+     - returns: An instance of the receiver if a model is found, otherwise - nil.
+     
+     */
+    
     public convenience init?(name: String, bundle: Bundle = .main) {
         
         guard
@@ -40,13 +50,13 @@ extension NSManagedObjectModel {
         }
     }
     
-    open func entityByClassName(_ entityClassName: String) -> NSEntityDescription? {
+    open func entity(byClassName entityClassName: String) -> NSEntityDescription? {
         
         return self.entitiesByClassName[entityClassName]
     }
     
-    open func entityByClass<C>(_ entityClass: C.Type) -> NSEntityDescription? where C: NSManagedObject {
+    open func entity<C>(byClass entityClass: C.Type) -> NSEntityDescription? where C: NSManagedObject {
         
-        return self.entityByClassName(String(reflecting: entityClass))
+        return self.entity(byClassName: String(reflecting: entityClass))
     }
 }

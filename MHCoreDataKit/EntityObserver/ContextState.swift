@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+///Represent a context state upon which changes are reported when occur
 public enum ContextState {
     
     case willSave

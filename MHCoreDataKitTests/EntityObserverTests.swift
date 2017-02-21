@@ -28,7 +28,7 @@ class EntityObserverTests: XCTestCase {
             var insertedPersons: [Person] = []
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
-            observer.observeChangesFor(.inserted) { (inserted, updated, deleted) in
+            observer.observeChanges(for: .inserted) { (inserted, updated, deleted) in
                 
                 XCTAssertTrue(inserted.count == insertedPersons.count)
                 XCTAssertTrue(updated.isEmpty)
@@ -74,7 +74,7 @@ class EntityObserverTests: XCTestCase {
         self.performExpectation { (expectation) in
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
-            observer.observeChangesFor(.updated) { (inserted, updated, deleted) in
+            observer.observeChanges(for: .updated) { (inserted, updated, deleted) in
                 
                 XCTAssertTrue(inserted.isEmpty)
                 XCTAssertTrue(updated.count == updatedPersons.count)
@@ -126,7 +126,7 @@ class EntityObserverTests: XCTestCase {
             var deletedPersons: [Person] = []
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)
-            observer.observeChangesFor(.deleted) { (inserted, updated, deleted) in
+            observer.observeChanges(for: .deleted) { (inserted, updated, deleted) in
                 
                 print("golqm be")
                 XCTAssertTrue(inserted.isEmpty)
@@ -179,7 +179,7 @@ class EntityObserverTests: XCTestCase {
             expectation.add(conditions: ["inserted \(2)", "updated \(1)", "deleted \(1)"])
             
             var observer: EntityObserver! = EntityObserver(entityType: Person.self, context: self.context)            
-            observer.observeChangesFor(.any, filter: { $0.age.uint16Value >= 18 }, changes: { (inserted, updated, deleted) in
+            observer.observeChanges(for: .any, filter: { $0.age.uint16Value >= 18 }, handler: { (inserted, updated, deleted) in
                 
                 if !inserted.isEmpty {
                     

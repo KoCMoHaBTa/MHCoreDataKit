@@ -24,7 +24,7 @@ extension NSManagedObject {
     
     public convenience init(model: NSManagedObjectModel, context: NSManagedObjectContext? = nil) throws {
         
-        guard let entityDescription = model.entityByClass(type(of: self)) else {
+        guard let entityDescription = model.entity(byClass: type(of: self)) else {
             
             
             throw Error(message: "Unable to find entity for class: \(type(of: self))")

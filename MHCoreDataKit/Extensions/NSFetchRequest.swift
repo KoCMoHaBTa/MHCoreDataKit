@@ -19,11 +19,13 @@ import CoreData
 //magically make NSFetchRequest conforming to it
 extension NSFetchRequest: NSFetchRequestExtension {
     
+    ///Configures the receiver with a predicate
     public func configureWith(predicate: NSPredicate?) {
         
         self.predicate = predicate
     }
     
+    ///Configures the receiver with a collection of sort descriptors
     public func configureWith(sortDescriptors: [NSSortDescriptor]) {
         
         self.sortDescriptors = sortDescriptors
@@ -33,6 +35,7 @@ extension NSFetchRequest: NSFetchRequestExtension {
 //add chainable configuration methods
 extension NSFetchRequestExtension {
     
+    ///Configures the receiver with a predicate
     @discardableResult
     public func configured(with predicate: NSPredicate?) -> Self {
         
@@ -40,6 +43,7 @@ extension NSFetchRequestExtension {
         return self
     }
     
+    ///Configures the receiver with a collection of sort descriptors
     @discardableResult
     public func configured(with sortDescriptors: [NSSortDescriptor]) -> Self {
         
@@ -51,6 +55,7 @@ extension NSFetchRequestExtension {
 //add sorting configuration
 extension NSFetchRequestExtension {
     
+    ///Configures the receiver for sorting the result collection by the value of a give key
     public func sortedBy(key: String, ascending: Bool = true) -> Self {
         
         return self.configured(with: [NSSortDescriptor(key: key, ascending: ascending)])
@@ -59,7 +64,7 @@ extension NSFetchRequestExtension {
 
 extension NSFetchRequestExtension {
     
-    ///Configures teh receiver for fecthing all entities
+    ///Configures the receiver for fecthing all entities
     public func fetchingAll() -> Self {
         
         return self.configured(with: nil)

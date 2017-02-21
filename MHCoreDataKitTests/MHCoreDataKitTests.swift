@@ -29,9 +29,9 @@ class MHCoreDataKitTests: XCTestCase {
         
         let model = self.stack.model
         
-        XCTAssertNotNil(model.entityByClass(Person.self))
-        XCTAssertNotNil(model.entityByClass(Company.self))
-        XCTAssertNil(model.entityByClass(_NonExistingPerson.self))
+        XCTAssertNotNil(model.entity(byClass: Person.self))
+        XCTAssertNotNil(model.entity(byClass: Company.self))
+        XCTAssertNil(model.entity(byClass: _NonExistingPerson.self))
     }
     
     func testEntityInitializationByModel() {

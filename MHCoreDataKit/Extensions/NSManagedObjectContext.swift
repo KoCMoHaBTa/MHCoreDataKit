@@ -11,6 +11,7 @@ import CoreData
 
 extension NSManagedObjectContext {
     
+    ///Initializes a context with a given concurrency type and a persistent store coordinator.
     public convenience init(concurrencyType: NSManagedObjectContextConcurrencyType, coordinator: NSPersistentStoreCoordinator) {
         
         self.init(concurrencyType: concurrencyType)
@@ -18,6 +19,7 @@ extension NSManagedObjectContext {
         self.persistentStoreCoordinator = coordinator
     }
     
+    ///Initializes a context with a given concurrency type and a parent context.
     public convenience init(concurrencyType: NSManagedObjectContextConcurrencyType, perentContext: NSManagedObjectContext) {
         
         self.init(concurrencyType: concurrencyType)

@@ -9,11 +9,23 @@
 import Foundation
 import CoreData
 
+///Observe NSManagedObjectContext changes
 open class EntityObserver<E:NSManagedObject> {
     
     private let entityType: E.Type
     private let context: NSManagedObjectContext?
     private let queue: OperationQueue = OperationQueue()
+    
+    
+    /**
+     
+     Creates an instance of the receiver for a given entity and context
+     
+     - parameter entityType: The type of the entity for which to observer for changes
+     - parameter context: The context for which to restrict the observer changes.
+     - returns: An instance of the receiver.
+     
+     */
     
     public init(entityType: E.Type, context: NSManagedObjectContext? = nil) {
         
@@ -26,8 +38,18 @@ open class EntityObserver<E:NSManagedObject> {
         NotificationCenter.default.removeObserver(self)
     }
     
+    /**
+     
+     Start observing changes
+     
+     - parameter entityType: The type of the entity for which to observer for changes
+     - parameter context: The context for which to restrict the observer changes.
+     - returns: An instance of the receiver.
+     
+     */
+    
     @discardableResult
-    open func observeChangesFor(contextState: ContextState = .default, entityState: EntityState = .default, filter: ((_ entity: E) -> Bool)? = nil, changes: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E> {
+    open func observeChanges(upon contextState: ContextState, for entityState: EntityState, filter: ((_ entity: E) -> Bool)?, handler: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E> {
         
         NotificationCenter.default.addObserver(forName: contextState.notificationName, object: self.context, queue: self.queue) { [weak self] (notification) -> Void in
             
@@ -36,20 +58,20 @@ open class EntityObserver<E:NSManagedObject> {
                 return
             }
             
-            let (inserted, updated, deleted) = weakSelf.expandNotification(notification, entityStateChange: entityState)
+            let (inserted, updated, deleted) = weakSelf.expand(notification: notification, for: entityState)
             
-            if let (inserted, updated, deleted) = weakSelf.match(inserted: inserted, updated: updated, deleted: deleted, entityState: entityState, filter: filter) {
+            if let (inserted, updated, deleted) = weakSelf.match(inserted: inserted, updated: updated, deleted: deleted, for: entityState, filteringBy: filter) {
                 
                 guard let context = notification.object as? NSManagedObjectContext ?? weakSelf.context else {
                     
-                    changes(inserted, updated, deleted)
+                    handler(inserted, updated, deleted)
                     
                     return
                 }
                 
                 context.perform({ () -> Void in
                     
-                    changes(inserted, updated, deleted)
+                    handler(inserted, updated, deleted)
                 })
             }
         }
@@ -57,14 +79,26 @@ open class EntityObserver<E:NSManagedObject> {
         return self
     }
     
-    //this is convenienice overload that provides more autocomplete options
     @discardableResult
-    open func observeChangesFor(_ entityState: EntityState, filter: ((_ entity: E) -> Bool)? = nil, changes: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E> {
+    open func observeChanges(_ handler: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E>{
         
-        return self.observeChangesFor(entityState: entityState, filter: filter, changes: changes)
+        return self.observeChanges(upon: .default, for: .default, filter: nil, handler: handler)
     }
     
-    private func expandNotification(_ notification: Notification, entityStateChange: EntityState) -> (inserted: [E], updated: [E], deleted: [E]) {
+    @discardableResult
+    open func observeChanges(for entityState: EntityState, handler: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E>{
+        
+        return self.observeChanges(upon: .default, for: entityState, filter: nil, handler: handler)
+    }
+    
+    @discardableResult
+    open func observeChanges(for entityState: EntityState, filter: ((_ entity: E) -> Bool)?, handler: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E>{
+        
+        return self.observeChanges(upon: .default, for: entityState, filter: filter, handler: handler)
+    }
+    
+    ///transforms the content of a notification into generic typed changes
+    private func expand(notification: Notification, for entityState: EntityState) -> (inserted: [E], updated: [E], deleted: [E]) {
 
         func transform(_ object: AnyObject?) -> [E] {
             
@@ -78,22 +112,23 @@ open class EntityObserver<E:NSManagedObject> {
         var updated = [E]()
         var deleted = [E]()
         
-        switch entityStateChange {
+        switch entityState {
             
-        case .inserted: inserted = transform(notification.userInfo?[NSInsertedObjectsKey] as AnyObject?)
-        case .updated: updated = transform(notification.userInfo?[NSUpdatedObjectsKey] as AnyObject?)
-        case .deleted: deleted = transform(notification.userInfo?[NSDeletedObjectsKey] as AnyObject?)
+            case .inserted: inserted = transform(notification.userInfo?[NSInsertedObjectsKey] as AnyObject?)
+            case .updated: updated = transform(notification.userInfo?[NSUpdatedObjectsKey] as AnyObject?)
+            case .deleted: deleted = transform(notification.userInfo?[NSDeletedObjectsKey] as AnyObject?)
             
-        default:
-            inserted = transform(notification.userInfo?[NSInsertedObjectsKey] as AnyObject?)
-            updated = transform(notification.userInfo?[NSUpdatedObjectsKey] as AnyObject?)
-            deleted = transform(notification.userInfo?[NSDeletedObjectsKey] as AnyObject?)
+            case .any:
+                inserted = transform(notification.userInfo?[NSInsertedObjectsKey] as AnyObject?)
+                updated = transform(notification.userInfo?[NSUpdatedObjectsKey] as AnyObject?)
+                deleted = transform(notification.userInfo?[NSDeletedObjectsKey] as AnyObject?)
         }
         
         return(inserted, updated, deleted)
     }
     
-    private func match(inserted: [E], updated: [E], deleted: [E], entityState: EntityState, filter: ((_ entity: E) -> Bool)?) -> (inserted: [E], updated: [E], deleted: [E])? {
+    ///match, filter and transform changes into single tuple for a given EntityState and a filter closure
+    private func match(inserted: [E], updated: [E], deleted: [E], for entityState: EntityState, filteringBy filter: ((_ entity: E) -> Bool)?) -> (inserted: [E], updated: [E], deleted: [E])? {
         
         var inserted = inserted
         var updated = updated

@@ -11,13 +11,32 @@ import CoreData
 
 extension NSEntityDescription {
     
-    open class func entityForClassName(_ entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
+    /**
+     
+     Lookup an entity into a context's model by a given class name.
+     
+     - parameter entityClassName: The entity class name for which to lookup.
+     - parameter context: The managed object context associated with the model into which to lookup.
+     - returns: An instance of the receiver if found, otherwise nil.
+     
+     */
+    open class func entity(forClassName entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
         
-        return context.persistentStoreCoordinator?.managedObjectModel.entityByClassName(entityClassName)
+        return context.persistentStoreCoordinator?.managedObjectModel.entity(byClassName: entityClassName)
     }
     
-    open class func entityForClass<C>(_ entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? where C: NSManagedObject {
+    /**
+     
+     Lookup an entity into a context's model by a given class.
+     
+     - parameter entityClass: The entity class for which to lookup.
+     - parameter context: The managed object context associated with the model into which to lookup.
+     - returns: An instance of the receiver if found, otherwise nil.
+     
+     */
+    
+    open class func entity<C>(forClass entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? where C: NSManagedObject {
         
-        return self.entityForClassName(String(reflecting: entityClass), context: context)
+        return self.entity(forClassName: String(reflecting: entityClass), context: context)
     }
 }
