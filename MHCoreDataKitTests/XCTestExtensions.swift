@@ -68,7 +68,11 @@ extension XCTestExpectation {
         
         XCTAssertNotNil(self.conditions[condition], "Cannot fulfil a non-exiting condition: \"\(condition)\"")
         
-        guard self.conditions[condition] == false else { return }
+        guard self.conditions[condition] == false else {
+            
+            XCTFail("Cannot fulfil condition again - \(condition)")
+            return
+        }
         
         self.conditions[condition] = true
         
