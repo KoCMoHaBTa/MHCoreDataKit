@@ -9,8 +9,9 @@
 import Foundation
 import XCTest
 import CoreData
+@testable import MHCoreDataKit
 
-struct TestStack {
+class TestStack: CoreDataStack {
     
     lazy var model: NSManagedObjectModel = {
         
@@ -39,4 +40,14 @@ struct TestStack {
         
         return NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType, coordinator: self.coordinator)
     }()
+    
+    func createBackgrondStack() -> CoreDataStack {
+        
+        return DefaultCoreDataStack(context: self.context).createBackgrondStack()
+    }
+    
+    func createMainStack() -> CoreDataStack {
+        
+        return DefaultCoreDataStack(context: self.context).createMainStack()
+    }
 }
