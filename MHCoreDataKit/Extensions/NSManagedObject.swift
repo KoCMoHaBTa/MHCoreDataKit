@@ -72,7 +72,7 @@ extension NSManagedObject {
 extension NSFetchRequestResult where Self: NSManagedObject {
     
     ///Makes a new instance of NSFetchRequest with ResultType and entityName beign the receiver
-    static func makeFetchRequest() -> NSFetchRequest<Self> {
+    public static func makeFetchRequest() -> NSFetchRequest<Self> {
         
         let entityName = self.entityName()
         let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
@@ -84,7 +84,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     ///Makes a new observer for the receiver type with a given context. 
     ///- parameter context: The context for which to restrict observed changes or nil for any context. Default to nil.
-    static func makeObserver(with context: NSManagedObjectContext? = nil) -> EntityObserver<Self> {
+    public static func makeObserver(with context: NSManagedObjectContext? = nil) -> EntityObserver<Self> {
         
         return EntityObserver<Self>(context: context)
     }
