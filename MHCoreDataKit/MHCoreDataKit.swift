@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public struct Error: RawRepresentable, Swift.Error {
+public struct MHCoreDataKitError: RawRepresentable, Error {
     
     public let message: String
     
@@ -44,7 +44,7 @@ public func StoresCommonDirectory(in directory: URL? = nil) throws -> URL {
     
     guard let directory = directory ?? FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
         
-        throw Error(message: "Unable to load store directory")
+        throw MHCoreDataKitError(message: "Unable to load store directory")
     }
     
     let coreDataDirectory = directory.appendingPathComponent("CoreDataStores", isDirectory: true)

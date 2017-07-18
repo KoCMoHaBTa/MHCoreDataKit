@@ -27,7 +27,7 @@ extension NSManagedObject {
         guard let entityDescription = model.entity(byClass: type(of: self)) else {
             
             
-            throw Error(message: "Unable to find entity for class: \(type(of: self))")
+            throw MHCoreDataKitError(message: "Unable to find entity for class: \(type(of: self))")
         }
         
         self.init(entity: entityDescription, insertInto: context)
@@ -48,7 +48,7 @@ extension NSManagedObject {
         
         guard let model = context.persistentStoreCoordinator?.managedObjectModel else {
             
-            throw Error(message: "Attempting to create an instance of \(type(of: self)) with invalid context \(context)\nReson: Missing persistentStoreCoordinator in context")
+            throw MHCoreDataKitError(message: "Attempting to create an instance of \(type(of: self)) with invalid context \(context)\nReson: Missing persistentStoreCoordinator in context")
         }
         
         try self.init(model: model, context: insert ? context : nil)

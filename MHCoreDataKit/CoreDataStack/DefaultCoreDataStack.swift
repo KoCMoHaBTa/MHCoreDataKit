@@ -63,7 +63,7 @@ extension DefaultCoreDataStack {
         
         guard let model = NSManagedObjectModel(name: name, bundle: bundle) else {
             
-            throw Error(message: "Unable to find model")
+            throw MHCoreDataKitError(message: "Unable to find model")
         }
 
         let storeURL = try StoreURL(forName: name)
