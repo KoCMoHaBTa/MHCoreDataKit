@@ -31,28 +31,90 @@ public struct Error: RawRepresentable, Swift.Error {
     }
 }
 
-
-
-
-//iskame go tova za da mojem da napravim generic fetch request i po class da vzemem entity name
-//
-//
-//
-//vsu6tnost entity name trqbva da e imeto na klasa hmmm ....
-//ama realno 6e iskame da razberem ot koi model e
-//vuv NSFetchRequest - entityName se predostavq v konstruktora koeto zna4i 4e e user provided
-
-/*
- by default this should be the name of the class without module prefix
- at this point (swift 2.2) this can be retrieved by String(self)
- however the user can always change the entity name to something else
- probably more appropriate would be to lookup into models and get the name from matching class
- model lookup is expensive and should be done once per class
+/**
+ Creates a directory url where all store files can be placed.
  
- so the options are following:
- 1. Assume that the entity name will match the class name and String(self) will continue to provide it - do not care about the model - better for generic fetch request
- 2. Lookup the entity name trough all possible models in the file system - multiple models may match the same class - better for core data stack
- 
+ - parameter directory: The store directory. Default to Library drectory
+ - returns: The constructed URL
+ - throws: An error in case the URL cannot be constructed.
+ - note: The url is constructed by the followin way - <directory>/CoreDataStores/
  */
+
+public func StoresCommonDirectory(in directory: URL? = nil) throws -> URL {
+    
+    guard let directory = directory ?? FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
+        
+        throw Error(message: "Unable to load store directory")
+    }
+    
+    let coreDataDirectory = directory.appendingPathComponent("CoreDataStores", isDirectory: true)
+    try FileManager.default.createDirectory(at: coreDataDirectory, withIntermediateDirectories: true, attributes: nil)
+    return coreDataDirectory
+}
+
+/**
+ Creates a directory where a store file can be placed.
+ 
+ - parameter name: The store file name
+ - parameter directory: The store directory. Default to Library drectory
+ - returns: The constructed URL
+ - throws: An error in case the URL cannot be constructed.
+ - note: The url is constructed by the followin way - <directory>/CoreDataStores/<name>/
+ */
+
+public func StoreDirectory(forName name: String, in directory: URL? = nil) throws -> URL {
+ 
+    let storeDrectory = try StoresCommonDirectory(in: directory).appendingPathComponent(name, isDirectory: true)
+    try FileManager.default.createDirectory(at: storeDrectory, withIntermediateDirectories: true, attributes: nil)
+    
+    return storeDrectory
+}
+
+/**
+ Creates and returns a store URL for a given name and extension in a given directory.
+ 
+ - parameter name: The store file name
+ - parameter ext: The store file extension. Default to `sqlite`
+ - parameter directory: The store directory. Default to Library drectory
+ - returns: The constructed URL
+ - throws: An error in case the URL cannot be constructed.
+ - note: The url is constructed by the followin way - <directory>/CoreDataStores/<name>/<name>.<extension>
+ */
+public func StoreURL(forName name: String, withExtension ext: String = "sqlite", in directory: URL? = nil) throws -> URL {
+    
+    let storeDrectory = try StoreDirectory(forName: name, in: directory)
+    let storeURL = storeDrectory.appendingPathComponent(name, isDirectory: false).appendingPathExtension(ext)
+    return storeURL
+}
+
+/**
+ Deletes the contents of a CoreDataStores directory inside a given directory.
+ 
+  - parameter directory: The store directory. Default to Library drectory
+  - throws: An error in case the directory cannot be deleted.
+ */
+public func DeleteAllStores(in directory: URL? = nil) throws {
+    
+    let dir = try StoresCommonDirectory(in: directory)
+    try FileManager.default.removeItem(at: dir)
+}
+
+/**
+ Deletes a store for a given name in a driectory
+ 
+ - parameter directory: The store directory. Default to Library drectory
+ - throws: An error in case the directory cannot be deleted.
+ */
+
+public func DeleteStore(forName name: String, in directory: URL? = nil) throws {
+    
+    let dir = try StoreDirectory(forName: name, in: directory)
+    try FileManager.default.removeItem(at: dir)
+}
+
+
+
+
+
 
 
