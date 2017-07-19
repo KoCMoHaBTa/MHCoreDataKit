@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char MHCoreDataKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MHCoreDataKit/PublicHeader.h>
 
-
+#import <MHCoreDataKit/NSFetchRequest+Extensions.h>

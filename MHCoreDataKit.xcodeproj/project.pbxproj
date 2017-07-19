@@ -31,6 +31,8 @@
 		E6311F7E1EEACA89001DC456 /* NSPersistentContainer+CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6311F7D1EEACA89001DC456 /* NSPersistentContainer+CoreDataStack.swift */; };
 		E6311F801EEACAB2001DC456 /* DefaultCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6311F7F1EEACAB2001DC456 /* DefaultCoreDataStack.swift */; };
 		E6311F821EEAE764001DC456 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6311F811EEAE764001DC456 /* CoreDataStackTests.swift */; };
+		E64124C31F1F777400AAB2B9 /* NSFetchRequest+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E64124C11F1F777400AAB2B9 /* NSFetchRequest+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E64124C41F1F777400AAB2B9 /* NSFetchRequest+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64124C21F1F777400AAB2B9 /* NSFetchRequest+Extensions.m */; };
 		E68EE1FD1EE973FF00D9CB04 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		E6311F7D1EEACA89001DC456 /* NSPersistentContainer+CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentContainer+CoreDataStack.swift"; sourceTree = "<group>"; };
 		E6311F7F1EEACAB2001DC456 /* DefaultCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCoreDataStack.swift; sourceTree = "<group>"; };
 		E6311F811EEAE764001DC456 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
+		E64124C11F1F777400AAB2B9 /* NSFetchRequest+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+Extensions.h"; sourceTree = "<group>"; };
+		E64124C21F1F777400AAB2B9 /* NSFetchRequest+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+Extensions.m"; sourceTree = "<group>"; };
 		E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +169,8 @@
 				30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */,
 				30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */,
 				991A8D4B1DFEF66C00B0D19F /* NSFetchRequest.swift */,
+				E64124C11F1F777400AAB2B9 /* NSFetchRequest+Extensions.h */,
+				E64124C21F1F777400AAB2B9 /* NSFetchRequest+Extensions.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64124C31F1F777400AAB2B9 /* NSFetchRequest+Extensions.h in Headers */,
 				3035208C1C88ECA400436351 /* MHCoreDataKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,7 +249,7 @@
 				TargetAttributes = {
 					303520871C88ECA400436351 = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0830;
 					};
 					303520D51C88EE9E00436351 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -297,6 +304,7 @@
 				991A8D4C1DFEF66C00B0D19F /* NSFetchRequest.swift in Sources */,
 				E6311F7E1EEACA89001DC456 /* NSPersistentContainer+CoreDataStack.swift in Sources */,
 				E68EE1FD1EE973FF00D9CB04 /* CoreDataStack.swift in Sources */,
+				E64124C41F1F777400AAB2B9 /* NSFetchRequest+Extensions.m in Sources */,
 				E6311F801EEACAB2001DC456 /* DefaultCoreDataStack.swift in Sources */,
 				30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */,
 				E6311F7C1EEACA73001DC456 /* AnyCoreDataStack.swift in Sources */,

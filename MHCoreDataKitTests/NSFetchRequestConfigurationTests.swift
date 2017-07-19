@@ -136,4 +136,10 @@ class NSFetchRequestConfigurationTests: XCTestCase {
         let result = try? self.stack.context.fetch(Person.makeFetchRequest().fetchingFor(keys: ["firstName", "lastName", "age"], values: ["ivanov", 15]))
         XCTAssertEqual(result?.count, 4)
     }
+    
+    func testExecuteWithContextOverload() {
+        
+        let result = try? Person.makeFetchRequest().fetchingFor(keys: ["firstName", "lastName", "age"], values: ["ivanov", 15]).execute(with: self.stack.context)
+        XCTAssertEqual(result?.count, 4)
+    }
 }
