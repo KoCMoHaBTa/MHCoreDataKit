@@ -59,14 +59,15 @@ extension DefaultCoreDataStack {
     }
     
     ///Creates an instance of the receiver for a given model name, bundle and persistent store coordinator configurations
-    public convenience init(name: String, bundle: Bundle, storeType: String, configurationName: String?, options: [AnyHashable : Any]?) throws {
+    public convenience init(modelName: String, modelBundle: Bundle, storeType: String, configurationName: String?, storeName: String?, options: [AnyHashable : Any]?) throws {
         
-        guard let model = NSManagedObjectModel(name: name, bundle: bundle) else {
+        guard let model = NSManagedObjectModel(name: modelName, bundle: modelBundle) else {
             
             throw MHCoreDataKitError(message: "Unable to find model")
         }
 
-        let storeURL = try StoreURL(forName: name)
+        let storeName = storeName ?? modelName
+        let storeURL = try StoreURL(forName: storeName)
         try self.init(model: model, storeType: storeType, configurationName: configurationName, storeURL: storeURL, options: options)
     }
 }
