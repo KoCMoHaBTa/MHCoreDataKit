@@ -34,6 +34,7 @@
 		E64124C31F1F777400AAB2B9 /* NSFetchRequest+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E64124C11F1F777400AAB2B9 /* NSFetchRequest+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E64124C41F1F777400AAB2B9 /* NSFetchRequest+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E64124C21F1F777400AAB2B9 /* NSFetchRequest+Extensions.m */; };
 		E6562D611F4183DF009FD702 /* NSPersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6562D601F4183DF009FD702 /* NSPersistentStoreCoordinator.swift */; };
+		E6562D631F418A84009FD702 /* NSPersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6562D621F418A84009FD702 /* NSPersistentStore.swift */; };
 		E68EE1FD1EE973FF00D9CB04 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		E64124C11F1F777400AAB2B9 /* NSFetchRequest+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+Extensions.h"; sourceTree = "<group>"; };
 		E64124C21F1F777400AAB2B9 /* NSFetchRequest+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+Extensions.m"; sourceTree = "<group>"; };
 		E6562D601F4183DF009FD702 /* NSPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinator.swift; sourceTree = "<group>"; };
+		E6562D621F418A84009FD702 /* NSPersistentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPersistentStore.swift; sourceTree = "<group>"; };
 		E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 			children = (
 				30F1D4AC1C89DF21004FEBE5 /* NSEntityDescription.swift */,
 				30F1D4A81C89DA98004FEBE5 /* NSManagedObjectModel.swift */,
+				E6562D621F418A84009FD702 /* NSPersistentStore.swift */,
 				E6562D601F4183DF009FD702 /* NSPersistentStoreCoordinator.swift */,
 				30DF3A791CA7F7CF00E6068A /* NSManagedObjectContext.swift */,
 				30F1D4AE1C89E7D9004FEBE5 /* NSManagedObject.swift */,
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30F1D4AF1C89E7D9004FEBE5 /* NSManagedObject.swift in Sources */,
+				E6562D631F418A84009FD702 /* NSPersistentStore.swift in Sources */,
 				30DF3A7F1CA7FE4300E6068A /* ContextState.swift in Sources */,
 				30F1D4A71C89DA6C004FEBE5 /* MHCoreDataKit.swift in Sources */,
 				30DF3A781CA7F5C100E6068A /* NSEntityDescription.swift in Sources */,

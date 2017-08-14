@@ -67,7 +67,7 @@ extension DefaultCoreDataStack {
         }
 
         let storeName = storeName ?? modelName
-        let storeURL = try StoreURL(forName: storeName)
+        let storeURL = try NSPersistentStore.url(forName: storeName)
         try self.init(model: model, storeType: storeType, configurationName: configurationName, storeURL: storeURL, options: options)
     }
 }

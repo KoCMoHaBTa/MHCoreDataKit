@@ -13,13 +13,13 @@ extension NSPersistentStoreCoordinator {
     
     public func addPersistentStore(ofType storeType: String, configurationName: String?, storeName: String, options: [AnyHashable : Any]?) throws {
         
-        let storeURL = try StoreURL(forName: storeName)
+        let storeURL = try NSPersistentStore.url(forName: storeName)
         try self.addPersistentStore(ofType: storeType, configurationName: configurationName, at: storeURL, options: options)
     }
 
     public func persistentStore(forName storeName: String) -> NSPersistentStore? {
         
-        guard let storeURL = try? StoreURL(forName: storeName) else {
+        guard let storeURL = try? NSPersistentStore.url(forName: storeName) else {
             
             return nil
         }
@@ -29,7 +29,7 @@ extension NSPersistentStoreCoordinator {
     
     public func removePersistentStore(forName storeName: String) throws {
         
-        let storeURL = try StoreURL(forName: storeName)
+        let storeURL = try NSPersistentStore.url(forName: storeName)
         guard let store = self.persistentStore(for: storeURL) else {
             
             throw MHCoreDataKitError(message: "Unable to find store at \(storeURL)")
