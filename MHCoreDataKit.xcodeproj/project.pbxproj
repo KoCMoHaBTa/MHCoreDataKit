@@ -36,6 +36,7 @@
 		E6562D611F4183DF009FD702 /* NSPersistentStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6562D601F4183DF009FD702 /* NSPersistentStoreCoordinator.swift */; };
 		E6562D631F418A84009FD702 /* NSPersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6562D621F418A84009FD702 /* NSPersistentStore.swift */; };
 		E68EE1FD1EE973FF00D9CB04 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */; };
+		E6C351B91F5D809900DB0AD9 /* CoreDataStackInitializationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C351B81F5D809900DB0AD9 /* CoreDataStackInitializationProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E6562D601F4183DF009FD702 /* NSPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinator.swift; sourceTree = "<group>"; };
 		E6562D621F418A84009FD702 /* NSPersistentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPersistentStore.swift; sourceTree = "<group>"; };
 		E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E6C351B81F5D809900DB0AD9 /* CoreDataStackInitializationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackInitializationProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */,
+				E6C351B81F5D809900DB0AD9 /* CoreDataStackInitializationProtocol.swift */,
 				E6311F7B1EEACA73001DC456 /* AnyCoreDataStack.swift */,
 				E6311F7D1EEACA89001DC456 /* NSPersistentContainer+CoreDataStack.swift */,
 				E6311F7F1EEACAB2001DC456 /* DefaultCoreDataStack.swift */,
@@ -314,6 +317,7 @@
 				E64124C41F1F777400AAB2B9 /* NSFetchRequest+Extensions.m in Sources */,
 				E6311F801EEACAB2001DC456 /* DefaultCoreDataStack.swift in Sources */,
 				30F1D4A91C89DA98004FEBE5 /* NSManagedObjectModel.swift in Sources */,
+				E6C351B91F5D809900DB0AD9 /* CoreDataStackInitializationProtocol.swift in Sources */,
 				E6311F7C1EEACA73001DC456 /* AnyCoreDataStack.swift in Sources */,
 				30DF3A7D1CA7FE1B00E6068A /* EntityObserver.swift in Sources */,
 				30DF3A811CA7FE4C00E6068A /* EntityState.swift in Sources */,

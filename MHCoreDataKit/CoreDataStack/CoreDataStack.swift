@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+///A type that represent a core data stack
 public protocol CoreDataStack {
     
     ///The managed object context associated with the stack
@@ -41,5 +42,14 @@ extension CoreDataStack {
             
             handler(context)
         }
+    }
+}
+
+extension CoreDataStack {
+    
+    public func addPersistentStore(ofType storeType: String, configurationName: String?, storeName: String, options: [AnyHashable : Any]?) throws {
+        
+        let storeURL = try NSPersistentStore.url(forName: storeName)
+        try self.context.persistentStoreCoordinator?.addPersistentStore(ofType: storeType, configurationName: configurationName, at: storeURL, options: options)
     }
 }
