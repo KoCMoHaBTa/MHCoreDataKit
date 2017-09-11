@@ -92,3 +92,12 @@ extension NSPersistentStore {
         try FileManager.default.removeItem(at: dir)
     }
 }
+
+extension NSPersistentStore {
+    
+    ///The name of the store derived from its URL as lastPathComponent
+    public var storeName: String? {
+        
+        return self.url?.deletingPathExtension().lastPathComponent
+    }
+}
