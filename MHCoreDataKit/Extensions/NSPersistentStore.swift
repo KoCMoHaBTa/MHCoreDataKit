@@ -11,13 +11,13 @@ import CoreData
 
 extension NSPersistentStore {
     
-    ///The default directory into which all physical persistent stores resides. Default to Library directory. 
-    @nonobjc public static var defaultDirectory: URL! = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first
+    ///The default directory into which all physical persistent stores resides. Default to Library/Application Support directory.
+    @nonobjc public static var defaultDirectory: URL! = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
     
     /**
      Creates a directory url where all store files can be placed.
      
-     - parameter directory: The store directory. Default to Library drectory
+     - parameter directory: The store directory. Default to Library/Application Support drectory
      - returns: The constructed URL
      - throws: An error in case the URL cannot be constructed.
      - note: The url is constructed by the followin way - <directory>/CoreDataStores/
@@ -34,7 +34,7 @@ extension NSPersistentStore {
      Creates a directory where a store file can be placed.
      
      - parameter name: The store file name
-     - parameter directory: The store directory. Default to Library drectory
+     - parameter directory: The store directory. Default to Library/Application Support drectory
      - returns: The constructed URL
      - throws: An error in case the URL cannot be constructed.
      - note: The url is constructed by the followin way - <directory>/CoreDataStores/<name>/
@@ -53,7 +53,7 @@ extension NSPersistentStore {
      
      - parameter name: The store file name
      - parameter ext: The store file extension. Default to `sqlite`
-     - parameter directory: The store directory. Default to Library drectory
+     - parameter directory: The store directory. Default to Library/Application Support drectory
      - returns: The constructed URL
      - throws: An error in case the URL cannot be constructed.
      - note: The url is constructed by the followin way - <directory>/CoreDataStores/<name>/<name>.<extension>
@@ -69,7 +69,7 @@ extension NSPersistentStore {
     /**
      Deletes the contents of a CoreDataStores directory inside a given directory.
      
-     - parameter directory: The store directory. Default to Library drectory
+     - parameter directory: The store directory. Default to Library/Application Support drectory
      - throws: An error in case the directory cannot be deleted.
      */
     
@@ -82,7 +82,7 @@ extension NSPersistentStore {
     /**
      Deletes a store for a given name in a driectory
      
-     - parameter directory: The store directory. Default to Library drectory
+     - parameter directory: The store directory. Default to Library/Application Support drectory
      - throws: An error in case the directory cannot be deleted.
      */
     
