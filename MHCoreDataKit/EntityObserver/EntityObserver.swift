@@ -101,7 +101,7 @@ open class EntityObserver<E: NSManagedObject> {
         func transform(_ object: AnyObject?) -> [E] {
             
             let collection = object as? Set<NSManagedObject>
-            let filtered = collection?.filter({ $0 is E }) as? [E]
+            let filtered = collection?.filter({ $0 is E }).map({ $0 as! E })
             
             return filtered ?? []
         }
