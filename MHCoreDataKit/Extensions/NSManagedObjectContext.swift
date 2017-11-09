@@ -27,3 +27,17 @@ extension NSManagedObjectContext {
         self.parent = perentContext
     }
 }
+
+extension NSManagedObjectContext {
+    
+    ///Deletes the object if not nil
+    public func deleteIfPresent(_ object: NSManagedObject?) {
+        
+        guard let object = object else {
+            
+            return
+        }
+        
+        self.delete(object)
+    }
+}
