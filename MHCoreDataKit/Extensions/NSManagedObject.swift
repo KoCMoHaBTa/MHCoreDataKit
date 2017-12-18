@@ -90,3 +90,21 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
 }
 
+///A type used for protocol extension on NSManagedObject
+public protocol NSManagedObjectExtensions {}
+extension NSManagedObject: NSManagedObjectExtensions {}
+
+extension NSManagedObjectExtensions where Self: NSManagedObject {
+    
+    ///Checks if the receiver is deleted and return nil if so, otherwise returns optional reference to the receiver
+    public var existing: Self? {
+        
+        guard self.isDeleted == false else {
+            
+            return nil
+        }
+        
+        return self
+    }
+}
+
