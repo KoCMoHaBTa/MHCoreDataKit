@@ -14,6 +14,7 @@ open class EntityObserver<E: NSManagedObject> {
     
     private let context: NSManagedObjectContext?
     private let queue: OperationQueue = OperationQueue()
+    private var observers: [NSObjectProtocol] = []
     
     
     /**
@@ -34,6 +35,7 @@ open class EntityObserver<E: NSManagedObject> {
     deinit {
         
         NotificationCenter.default.removeObserver(self)
+        self.observers.forEach({ NotificationCenter.default.removeObserver($0) })
     }
     
     /**
@@ -49,7 +51,7 @@ open class EntityObserver<E: NSManagedObject> {
     @discardableResult
     open func observeChanges(upon contextState: ContextState, for entityState: EntityState, filter: ((_ entity: E) -> Bool)?, handler: @escaping (_ inserted: [E], _ updated: [E], _ deleted: [E]) -> Void) -> EntityObserver<E> {
         
-        NotificationCenter.default.addObserver(forName: contextState.notificationName, object: self.context, queue: self.queue) { [weak self] (notification) -> Void in
+        let observer = NotificationCenter.default.addObserver(forName: contextState.notificationName, object: self.context, queue: self.queue) { [weak self] (notification) -> Void in
             
             guard let weakSelf = self else {
                 
@@ -73,6 +75,8 @@ open class EntityObserver<E: NSManagedObject> {
                 })
             }
         }
+        
+        self.observers.append(observer)
         
         return self
     }
