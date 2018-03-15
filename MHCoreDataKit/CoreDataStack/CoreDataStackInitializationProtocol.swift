@@ -44,7 +44,7 @@ extension CoreDataStackInitializationProtocol {
         }
         
         let storeName = storeName ?? modelName
-        let storeURL = try NSPersistentStore.url(forName: storeName)
+        let storeURL = try NSPersistentStore.url(forStoreName: storeName, configurationName: configurationName)
         try self.init(model: model, storeType: storeType, configurationName: configurationName, storeURL: storeURL, options: options)
     }
 }

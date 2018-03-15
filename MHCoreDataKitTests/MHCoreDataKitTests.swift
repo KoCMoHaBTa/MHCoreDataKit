@@ -70,12 +70,13 @@ class MHCoreDataKitTests: XCTestCase {
     func testStoreURL() {
         
         let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        XCTAssertEqual(try! NSPersistentStore.url(forName: "test", withExtension: "gg", in: dir), dir.appendingPathComponent("CoreDataStores/test/test.gg", isDirectory: false))
+        XCTAssertEqual(try! NSPersistentStore.url(forStoreName: "test", configurationName: "asd", withExtension: "gg", in: dir), dir.appendingPathComponent("CoreDataStores/asd/test.gg", isDirectory: false))
+        XCTAssertEqual(try! NSPersistentStore.url(forStoreName: "test", in: dir), dir.appendingPathComponent("CoreDataStores/test/test.sqlite", isDirectory: false))
     }
     
     func testDeleteStore() {
         
-        let url = try! NSPersistentStore.url(forName: "s1")
+        let url = try! NSPersistentStore.url(forStoreName: "s1")
         XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
         
         try! "".write(to: url, atomically: true, encoding: .utf8)
@@ -87,8 +88,8 @@ class MHCoreDataKitTests: XCTestCase {
     
     func testDeleteAllStores() {
         
-        let s1 = try! NSPersistentStore.url(forName: "s1")
-        let s2 = try! NSPersistentStore.url(forName: "s2")
+        let s1 = try! NSPersistentStore.url(forStoreName: "s1")
+        let s2 = try! NSPersistentStore.url(forStoreName: "s2")
         XCTAssertFalse(FileManager.default.fileExists(atPath: s1.path))
         XCTAssertFalse(FileManager.default.fileExists(atPath: s1.path))
         

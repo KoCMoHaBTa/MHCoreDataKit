@@ -21,7 +21,7 @@ extension NSPersistentStoreCoordinator {
     
     public func addPersistentStore(ofType storeType: String, configurationName: String?, storeName: String, options: [AnyHashable : Any]?) throws {
         
-        let storeURL = try NSPersistentStore.url(forName: storeName)
+        let storeURL = try NSPersistentStore.url(forStoreName: storeType, configurationName: configurationName)
         try self.addPersistentStore(ofType: storeType, configurationName: configurationName, at: storeURL, options: options)
     }
 
@@ -31,13 +31,14 @@ extension NSPersistentStoreCoordinator {
      
      - note: The store location is derived from the store name, using `NSPersistentStore.url(forName:)`
      - prameter storeName: The name of the persistant store for which to look up
+     - parameter configurationName: The name of the store configuration. Default to nil.
      - returns: The persistent store for the given name`.
      
      */
     
-    public func persistentStore(forName storeName: String) -> NSPersistentStore? {
+    public func persistentStore(forName storeName: String, configurationName: String? = nil) -> NSPersistentStore? {
         
-        guard let storeURL = try? NSPersistentStore.url(forName: storeName) else {
+        guard let storeURL = try? NSPersistentStore.url(forStoreName: storeName, configurationName: configurationName) else {
             
             return nil
         }
@@ -51,12 +52,13 @@ extension NSPersistentStoreCoordinator {
      
      - note: The store location is derived from the store name, using `NSPersistentStore.url(forName:)`
      - prameter storeName: The name of the persistant store for which to look up
+     - parameter configurationName: The name of the store configuration
      
      */
     
-    public func removePersistentStore(forName storeName: String) throws {
+    public func removePersistentStore(forName storeName: String, configurationName: String? = nil) throws {
         
-        let storeURL = try NSPersistentStore.url(forName: storeName)
+        let storeURL = try NSPersistentStore.url(forStoreName: storeName, configurationName: configurationName)
         guard let store = self.persistentStore(for: storeURL) else {
             
             throw MHCoreDataKitError(message: "Unable to find store at \(storeURL)")

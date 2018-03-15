@@ -49,20 +49,21 @@ extension NSPersistentStore {
     }
     
     /**
-     Creates and returns a store URL for a given name and extension in a given directory.
+     Creates and returns a store URL for a given store name, configuration name and extension in a given directory.
      
-     - parameter name: The store file name
+     - parameter storeName: The store file name
+     - parameter configurationName: The configuration folder name. Default to nil, resolving to storeName
      - parameter ext: The store file extension. Default to `sqlite`
      - parameter directory: The store directory. Default to Library/Application Support drectory
      - returns: The constructed URL
      - throws: An error in case the URL cannot be constructed.
-     - note: The url is constructed by the followin way - <directory>/CoreDataStores/<name>/<name>.<extension>
+     - note: The url is constructed by the followin way - <directory>/CoreDataStores/<configurationName ?? storeName>/<storeName>.<extension>
      */
     
-    public static func url(forName name: String, withExtension ext: String = "sqlite", in directory: URL = defaultDirectory) throws -> URL {
+    public static func url(forStoreName storeName: String, configurationName: String? = nil, withExtension ext: String = "sqlite", in directory: URL = defaultDirectory) throws -> URL {
         
-        let storeDrectory = try self.directory(forName: name, in: directory)
-        let storeURL = storeDrectory.appendingPathComponent(name, isDirectory: false).appendingPathExtension(ext)
+        let storeDrectory = try self.directory(forName: configurationName ?? storeName, in: directory)
+        let storeURL = storeDrectory.appendingPathComponent(storeName, isDirectory: false).appendingPathExtension(ext)
         return storeURL
     }
     
