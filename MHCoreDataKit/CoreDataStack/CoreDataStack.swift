@@ -49,7 +49,7 @@ extension CoreDataStack {
     
     public func addPersistentStore(ofType storeType: String, configurationName: String?, storeName: String, options: [AnyHashable : Any]?) throws {
         
-        let storeURL = try NSPersistentStore.url(forStoreName: storeType, configurationName: configurationName)
+        let storeURL = try NSPersistentStore.url(forStoreName: storeName, configurationName: configurationName)
         try self.context.persistentStoreCoordinator?.addPersistentStore(ofType: storeType, configurationName: configurationName, at: storeURL, options: options)
     }
 }
