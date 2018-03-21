@@ -2,6 +2,15 @@
 
 **MHCoreDataKit** is a collection of useful tools that, which goal is to makes developer's life easier by reducing the complexity of using **CoreData**.
 
+## Highlights
+
+- provides single Core Data stack abstraction
+- provides default Core Data stack implementation
+- type friendly and convenient Entity observing
+- type friendly, convenient and no boilerplate NSFetchRequest setup and executing
+- convenient NSManagedObject initialization
+- focus on just model name and optionally configuation name - forget about managing store and model URLs
+
 ## Contents
 
 The library provides utilities and extensions of CoreData classes that are more convenient to use and reduce some boilerplate code.
