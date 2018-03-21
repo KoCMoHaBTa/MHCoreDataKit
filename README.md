@@ -45,7 +45,7 @@ You can always tweak the input arguments or use one of the other constructors of
 
 The store location is generated based on the `NSPersistentStore` extension.
 
-### Conveniet entity observing
+### Convenient entity observing
 
 If you've heard of managed obejct notifications
 
@@ -157,22 +157,22 @@ Creating an instance by looking up the model by name.
 
 You will find extensions for convenient managing store directories.
 
-- `NSPersistentStore.defaultDirectory` - this is the default directory where all stores will be placed. You can always change it at the entry point of your application or keep the default value which places stores into `Library/Application Support` directory.
-- `NSPersistentStore.commonDirectory()` - this creates a common stores directory within the default one where the stores are placed. Default to `Library/Application Support/CoreDataStores/` 
-- `NSPersistentStore.directory(forStoreName storeName: String, configurationName: String? = nil, in directory: URL = defaultDirectory) throws -> URL`
+- **`defaultDirectory`** - this is the default directory where all stores will be placed. You can always change it at the entry point of your application or keep the default value which places stores into `Library/Application Support` directory.
+- **`commonDirectory()`** - this creates a common stores directory within the default one where the stores are placed. Default to `Library/Application Support/CoreDataStores/` 
+- **`directory(forStoreName:configurationName:in:)`**
 This method returns a persistent store directory URL based store name and optional configuration name. Using the default values will produce the following URL - `Library/Application Support/CoreDataStores/Default/<storeName>/`
-- `NSPersistentStore.url(forStoreName storeName: String, configurationName: String? = nil, withExtension ext: String = "sqlite", in directory: URL = defaultDirectory) throws -> URL`
+- **`url(forStoreName:configurationName:withExtension:in:)`**
 This method returns a persistent store URL based on input arguments and/or default values. Using the default values will produce the following URL - `Library/Application Support/CoreDataStores/Default/<storeName>/<storeName>.sqlite`
-- `NSPersistentStore.deleteAll()` - by default this will delete the following folder - `Library/Application Support/CoreDataStores/`
-- `NSPersistentStore.detele(forStoreName storeName: String, configurationName: String? = nil, in directory: URL = defaultDirectory) throws`
+- `deleteAll()` - by default this will delete the following folder - `Library/Application Support/CoreDataStores/`
+- **`detele(forStoreName:configurationName:in:)`**
 This method deteles a persistent store directory based on store name and optional configuration name. Using the default values will delete the following URL - `Library/Application Support/CoreDataStores/Default/<storeName>/`
 
 #### `NSPersistentStoreCoordinator`
 
 Extensions on ***NSPersistentStoreCoordinator*** provides convenience methods to add, remove and retrieve stores based on store name and configuration name, managed by NSPersistentStore extensions rather than direct URLs. 
 
-- `func addPersistentStore(ofType storeType: String, configurationName: String?, storeName: String, options: [AnyHashable : Any]?) throws` - Adds a persistent store to a location based on its name.
-- `func persistentStore(forName storeName: String, configurationName: String? = nil) -> NSPersistentStore?` - Lookup and returns a persistent store based on its name.
-- `func removePersistentStore(forName storeName: String, configurationName: String? = nil) throws` - Removes a persistent store based on its name.
-- `func removePersistentStores(forConfigurationName configurationName: String) throws` - Removes all persistent stores matching a given configuration name.
-- `func removeAllPersistentStores() throws` - ///Removes all presistent sotres.
+- **`addPersistentStore(ofType:configurationName:storeName:options:)`** - Adds a persistent store to a location based on its name.
+- **`persistentStore(forName:configurationName:)`** - Lookup and returns a persistent store based on its name.
+- **`removePersistentStore(forName:configurationName:)`** - Removes a persistent store based on its name.
+- **`removePersistentStores(forConfigurationName:)`** - Removes all persistent stores matching a given configuration name.
+- **`removeAllPersistentStores()`** - ///Removes all presistent sotres.
