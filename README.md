@@ -157,15 +157,15 @@ Creating an instance by looking up the model by name.
 
 You will find extensions for convenient managing store directories.
 
-- **`defaultDirectory`** - this is the default directory where all stores will be placed. You can always change it at the entry point of your application or keep the default value which places stores into `Library/Application Support` directory.
-- **`commonDirectory()`** - this creates a common stores directory within the default one where the stores are placed. Default to `Library/Application Support/CoreDataStores/` 
+- **`defaultDirectory`** - this is the default directory where all stores will be placed. You can always change it at the entry point of your application or keep the default value which places stores into ***Library/Application Support*** directory.
+- **`commonDirectory()`** - this creates a common stores directory within the default one where the stores are placed. Default to ***Library/Application Support/CoreDataStores/*** 
 - **`directory(forStoreName:configurationName:in:)`**
-This method returns a persistent store directory URL based store name and optional configuration name. Using the default values will produce the following URL - `Library/Application Support/CoreDataStores/Default/<storeName>/`
+This method returns a persistent store directory URL based store name and optional configuration name. Using the default values will produce the following URL - ***Library/Application Support/CoreDataStores/Default/`<storeName>`/***
 - **`url(forStoreName:configurationName:withExtension:in:)`**
-This method returns a persistent store URL based on input arguments and/or default values. Using the default values will produce the following URL - `Library/Application Support/CoreDataStores/Default/<storeName>/<storeName>.sqlite`
-- `deleteAll()` - by default this will delete the following folder - `Library/Application Support/CoreDataStores/`
+This method returns a persistent store URL based on input arguments and/or default values. Using the default values will produce the following URL - ***Library/Application Support/CoreDataStores/Default/`<storeName>`/`<storeName>`.sqlite***
+- **`deleteAll()`** - by default this will delete the following folder - ***Library/Application Support/CoreDataStores/***
 - **`detele(forStoreName:configurationName:in:)`**
-This method deteles a persistent store directory based on store name and optional configuration name. Using the default values will delete the following URL - `Library/Application Support/CoreDataStores/Default/<storeName>/`
+This method deteles a persistent store directory based on store name and optional configuration name. Using the default values will delete the following URL - ***Library/Application Support/CoreDataStores/Default/`<storeName>`/***
 
 #### `NSPersistentStoreCoordinator`
 
@@ -175,4 +175,4 @@ Extensions on ***NSPersistentStoreCoordinator*** provides convenience methods to
 - **`persistentStore(forName:configurationName:)`** - Lookup and returns a persistent store based on its name.
 - **`removePersistentStore(forName:configurationName:)`** - Removes a persistent store based on its name.
 - **`removePersistentStores(forConfigurationName:)`** - Removes all persistent stores matching a given configuration name.
-- **`removeAllPersistentStores()`** - ///Removes all presistent sotres.
+- **`removeAllPersistentStores()`** - Removes all presistent sotres.
