@@ -31,18 +31,20 @@ extension NSPersistentStore {
     }
     
     /**
-     Creates a directory where a store file can be placed.
+     Creates and returns the directory where a store file can be placed.
      
-     - parameter name: The store file name
+     - parameter storeName: The store file name
+     - parameter configurationName: The configiuration name. Default to nil, resolving to "Default"
      - parameter directory: The store directory. Default to Library/Application Support drectory
      - returns: The constructed URL
      - throws: An error in case the URL cannot be constructed.
-     - note: The url is constructed by the followin way - <directory>/CoreDataStores/<name>/
+     - note: The url is constructed by the followin way - <directory>/CoreDataStores/<configurationName>/<storeName>/
      */
     
-    public static func directory(forName name: String, in directory: URL = defaultDirectory) throws -> URL {
+    public static func directory(forStoreName storeName: String, configurationName: String? = nil, in directory: URL = defaultDirectory) throws -> URL {
         
-        let storeDrectory = try self.commonDirectory(in: directory).appendingPathComponent(name, isDirectory: true)
+        let configurationName = configurationName ?? "Default"
+        let storeDrectory = try self.commonDirectory(in: directory).appendingPathComponent(configurationName, isDirectory: true).appendingPathComponent(storeName, isDirectory: true)
         try FileManager.default.createDirectory(at: storeDrectory, withIntermediateDirectories: true, attributes: nil)
         
         return storeDrectory
@@ -52,18 +54,18 @@ extension NSPersistentStore {
      Creates and returns a store URL for a given store name, configuration name and extension in a given directory.
      
      - parameter storeName: The store file name
-     - parameter configurationName: The configuration folder name. Default to nil, resolving to storeName
+     - parameter configurationName: The configuration folder name. Default to nil, resolving to "Default"
      - parameter ext: The store file extension. Default to `sqlite`
      - parameter directory: The store directory. Default to Library/Application Support drectory
      - returns: The constructed URL
      - throws: An error in case the URL cannot be constructed.
-     - note: The url is constructed by the followin way - <directory>/CoreDataStores/<configurationName ?? storeName>/<storeName>.<extension>
+     - note: The url is constructed by the followin way - <directory>/CoreDataStores/<configurationName>/<storeName>/<storeName>.<extension>
      */
     
     public static func url(forStoreName storeName: String, configurationName: String? = nil, withExtension ext: String = "sqlite", in directory: URL = defaultDirectory) throws -> URL {
         
-        let storeDrectory = try self.directory(forName: configurationName ?? storeName, in: directory)
-        let storeURL = storeDrectory.appendingPathComponent(storeName, isDirectory: false).appendingPathExtension(ext)
+        let storeDirectory = try self.directory(forStoreName: storeName, configurationName: configurationName, in: directory)
+        let storeURL = storeDirectory.appendingPathComponent(storeName, isDirectory: false).appendingPathExtension(ext)
         return storeURL
     }
     
@@ -81,16 +83,17 @@ extension NSPersistentStore {
     }
     
     /**
-     Deletes a store for a given name in a driectory
+     Deletes a store for a given name and configuration in a driectory.
      
-     - parameter directory: The store directory. Default to Library/Application Support drectory
+     - parameter storeName: The name of the store.
+     - parameter configurationName: The configuration folder name. Default to nil, resolving to "Default"
      - throws: An error in case the directory cannot be deleted.
      */
     
-    public static func delete(forName name: String, in directory: URL = defaultDirectory) throws {
+    public static func delete(forStoreName storeName: String, configurationName: String? = nil, in directory: URL = defaultDirectory) throws {
         
-        let dir = try self.directory(forName: name, in: directory)
-        try FileManager.default.removeItem(at: dir)
+        let storeDirectory = try self.directory(forStoreName: storeName, configurationName: configurationName, in: directory)
+        try FileManager.default.removeItem(at: storeDirectory)
     }
 }
 

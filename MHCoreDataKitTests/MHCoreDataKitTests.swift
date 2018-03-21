@@ -64,14 +64,15 @@ class MHCoreDataKitTests: XCTestCase {
     func testStoreDirectory() {
         
         let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        XCTAssertEqual(try! NSPersistentStore.directory(forName: "test", in: dir), dir.appendingPathComponent("CoreDataStores/test", isDirectory: true))
+        XCTAssertEqual(try! NSPersistentStore.directory(forStoreName: "test", in: dir), dir.appendingPathComponent("CoreDataStores/Default/test", isDirectory: true))
+        XCTAssertEqual(try! NSPersistentStore.directory(forStoreName: "test", configurationName: "kenobi", in: dir), dir.appendingPathComponent("CoreDataStores/kenobi/test", isDirectory: true))
     }
     
     func testStoreURL() {
         
         let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        XCTAssertEqual(try! NSPersistentStore.url(forStoreName: "test", configurationName: "asd", withExtension: "gg", in: dir), dir.appendingPathComponent("CoreDataStores/asd/test.gg", isDirectory: false))
-        XCTAssertEqual(try! NSPersistentStore.url(forStoreName: "test", in: dir), dir.appendingPathComponent("CoreDataStores/test/test.sqlite", isDirectory: false))
+        XCTAssertEqual(try! NSPersistentStore.url(forStoreName: "test", configurationName: "asd", withExtension: "gg", in: dir), dir.appendingPathComponent("CoreDataStores/asd/test/test.gg", isDirectory: false))
+        XCTAssertEqual(try! NSPersistentStore.url(forStoreName: "test", in: dir), dir.appendingPathComponent("CoreDataStores/Default/test/test.sqlite", isDirectory: false))
     }
     
     func testDeleteStore() {
@@ -82,14 +83,26 @@ class MHCoreDataKitTests: XCTestCase {
         try! "".write(to: url, atomically: true, encoding: .utf8)
         XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
         
-        try! NSPersistentStore.delete(forName: "s1")
+        try! NSPersistentStore.delete(forStoreName: "s1")
+        XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
+    }
+    
+    func testDeleteStoreWithConfiguration() {
+        
+        let url = try! NSPersistentStore.url(forStoreName: "s2", configurationName: "jedi")
+        XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
+        
+        try! "".write(to: url, atomically: true, encoding: .utf8)
+        XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
+        
+        try! NSPersistentStore.delete(forStoreName: "s2", configurationName: "jedi")
         XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
     }
     
     func testDeleteAllStores() {
         
-        let s1 = try! NSPersistentStore.url(forStoreName: "s1")
-        let s2 = try! NSPersistentStore.url(forStoreName: "s2")
+        let s1 = try! NSPersistentStore.url(forStoreName: "s3")
+        let s2 = try! NSPersistentStore.url(forStoreName: "s4", configurationName: "obi")
         XCTAssertFalse(FileManager.default.fileExists(atPath: s1.path))
         XCTAssertFalse(FileManager.default.fileExists(atPath: s1.path))
         
