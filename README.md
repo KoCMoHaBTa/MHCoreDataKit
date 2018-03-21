@@ -6,6 +6,18 @@
 
 The library provides utilities and extensions of CoreData classes that are more convenient to use and reduce some boilerplate code.
 
+- [Core Sata stack protocol oriented abstraction and common interface](#core-sata-stack-protocol-oriented-abstraction-and-common-interface)
+- [How to use `DefaultCoreDataStack`](#how-to-use-defaultcoredatastack)
+- [Convenient entity observing](#convenient-entity-observing)
+- [Core Data extensions](#core-data-extensions)
+	- [`NSManagedObject`](#nsmanagedobject)
+	- [`NSFetchRequest`](#nsfetchrequest)
+	- [`NSManagedObjectModel`](#nsmanagedobjectmodel)
+	- [`NSPersistentStore`](#nspersistentstore)
+	- [`NSPersistentStoreCoordinator`](#nspersistentstorecoordinator)
+
+## Details
+
 ### Core Sata stack protocol oriented abstraction and common interface
 
 You prabably already have heard of [Core Data stack](https://developer.apple.com/library/content/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html). And you probably already know how inconvenient it is to setup and use. On top of it, you've probably already been using a custom one and you are wondering whenever you should use [the newly introduced in iOS 10 native one](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/InitializingtheCoreDataStack.html) or it's too inconvenient to migrate to it.
