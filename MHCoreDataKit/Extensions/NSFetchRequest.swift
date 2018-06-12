@@ -55,10 +55,17 @@ extension NSFetchRequestExtension {
 //add sorting configuration
 extension NSFetchRequestExtension {
     
-    ///Configures the receiver for sorting the result collection by the value of a give key
+    ///Configures the receiver for sorting the result collection by the value of the given key
     public func sortedBy(key: String, ascending: Bool = true) -> Self {
         
         return self.configured(with: [NSSortDescriptor(key: key, ascending: ascending)])
+    }
+    
+    ///Configures the receiver for sorting the result collection by the values of the given keys
+    public func sortedBy(keys: [String], ascending: Bool = true) -> Self {
+        
+        let sortDescriptors = keys.map({ NSSortDescriptor(key: $0, ascending: ascending) })
+        return self.configured(with: sortDescriptors)
     }
 }
 
