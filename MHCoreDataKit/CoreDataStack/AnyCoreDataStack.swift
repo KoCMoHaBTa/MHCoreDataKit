@@ -11,9 +11,9 @@ import CoreData
 
 open class AnyCoreDataStack: CoreDataStack {
     
-    open var context: NSManagedObjectContext
-    open let createBackgrondStackHandler: () -> CoreDataStack
-    open let createMainStackHandler: () -> CoreDataStack
+    public let context: NSManagedObjectContext
+    public let createBackgrondStackHandler: () -> CoreDataStack
+    public let createMainStackHandler: () -> CoreDataStack
     
     public init(context: NSManagedObjectContext, createBackgrondStackHandler: @escaping () -> CoreDataStack, createMainStackHandler: @escaping () -> CoreDataStack) {
         

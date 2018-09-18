@@ -12,7 +12,7 @@ import CoreData
 ///A default core data stack that creates background and main contexts targeting directly the receiver context's persistent store coordinator.
 open class DefaultCoreDataStack: CoreDataStack, CoreDataStackInitializationProtocol {
     
-    open let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
     
     ///Creates an instance of the receiver with a given context
     public required init(context: NSManagedObjectContext) {
