@@ -1,5 +1,7 @@
 ## MHCoreDataKit
 
+[![Build Status](https://app.bitrise.io/app/f506822a8d2fd46f/status.svg?token=PBc8UeNP6lxA2Iso8gC64w)](https://app.bitrise.io/app/f506822a8d2fd46f)
+
 **MHCoreDataKit** is a collection of useful tools that, which goal is to makes developer's life easier by reducing the complexity of using **CoreData**.
 
 ## Highlights
