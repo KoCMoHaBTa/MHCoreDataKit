@@ -27,6 +27,27 @@ The library provides utilities and extensions of CoreData classes that are more 
 	- [`NSManagedObjectModel`](#nsmanagedobjectmodel)
 	- [`NSPersistentStore`](#nspersistentstore)
 	- [`NSPersistentStoreCoordinator`](#nspersistentstorecoordinator)
+    
+## Installation
+
+[Embed]:
+https://developer.apple.com/library/content/technotes/tn2435/_index.html#//apple_ref/doc/uid/DTS40017543-CH1-PROJ_CONFIG-APPS_WITH_MULTIPLE_XCODE_PROJECTS
+
+#### [Carthage](https://github.com/Carthage/Carthage)
+
+Add `github "KoCMoHaBTa/MHCoreDataKit"` to your `Cartfile`, then [Embed] the framework directly into your project.
+
+#### [Cocoapods](https://cocoapods.org)
+
+Add `pod 'MHCoreDataKit'` to your  `Podfile`
+
+#### [Submodules](http://git-scm.com/docs/git-submodule)
+
+[Add a submodule](https://git-scm.com/docs/git-submodule#git-submodule-add-bltbranchgt-f--force--nameltnamegt--referenceltrepositorygt--depthltdepthgt--ltrepositorygtltpathgt) to your repostiroy, then [Embed] the framework directly into your project
+
+#### Manually
+
+[Download](https://github.com/KoCMoHaBTa/MHCoreDataKit/releases), then [Embed] the framework directly into your project
 
 ## Details
 

@@ -84,6 +84,7 @@
 		E6562D601F4183DF009FD702 /* NSPersistentStoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinator.swift; sourceTree = "<group>"; };
 		E6562D621F418A84009FD702 /* NSPersistentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPersistentStore.swift; sourceTree = "<group>"; };
 		E68EE1FC1EE973FF00D9CB04 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E69BD70321FBBB4C00605684 /* MHCoreDataKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MHCoreDataKit.podspec; sourceTree = "<group>"; };
 		E6C351B81F5D809900DB0AD9 /* CoreDataStackInitializationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackInitializationProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +112,7 @@
 			children = (
 				303520AF1C88ED8C00436351 /* README.md */,
 				E648E8F8217A2B5000FC15BA /* LICENSE */,
+				E69BD70321FBBB4C00605684 /* MHCoreDataKit.podspec */,
 				3035208A1C88ECA400436351 /* MHCoreDataKit */,
 				303520D71C88EE9E00436351 /* MHCoreDataKitTests */,
 				303520891C88ECA400436351 /* Products */,
