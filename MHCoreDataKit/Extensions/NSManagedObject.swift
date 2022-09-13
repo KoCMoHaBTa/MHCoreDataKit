@@ -63,7 +63,7 @@ extension NSManagedObject {
 extension NSManagedObject {
     
     ///By default convention, this is the name of the class. Override in order to provide custom name.
-    open class func entityName() -> String {
+    public class func entityName() -> String {
         
         return String(describing: self)
     }

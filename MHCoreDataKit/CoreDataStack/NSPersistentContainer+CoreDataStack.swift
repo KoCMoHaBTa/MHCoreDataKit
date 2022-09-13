@@ -12,12 +12,12 @@ import CoreData
 @available(iOS 10.0, *)
 extension NSPersistentContainer: CoreDataStack {
     
-    open var context: NSManagedObjectContext {
+    public var context: NSManagedObjectContext {
         
         return self.viewContext
     }
     
-    open func createBackgrondStack() -> CoreDataStack {
+    public func createBackgrondStack() -> CoreDataStack {
         
         let context = self.newBackgroundContext()
         
@@ -35,7 +35,7 @@ extension NSPersistentContainer: CoreDataStack {
         return stack
     }
     
-    open func createMainStack() -> CoreDataStack {
+    public func createMainStack() -> CoreDataStack {
         
         let context = self.viewContext
         

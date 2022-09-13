@@ -20,7 +20,7 @@ extension NSEntityDescription {
      - returns: An instance of the receiver if found, otherwise nil.
      
      */
-    open class func entity(forClassName entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
+    public class func entity(forClassName entityClassName: String, context: NSManagedObjectContext) -> NSEntityDescription? {
         
         return context.persistentStoreCoordinator?.managedObjectModel.entity(byClassName: entityClassName)
     }
@@ -35,7 +35,7 @@ extension NSEntityDescription {
      
      */
     
-    open class func entity<C>(forClass entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? where C: NSManagedObject {
+    public class func entity<C>(forClass entityClass: C.Type, context: NSManagedObjectContext) -> NSEntityDescription? where C: NSManagedObject {
         
         return self.entity(forClassName: String(reflecting: entityClass), context: context)
     }

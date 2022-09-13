@@ -37,7 +37,7 @@ extension NSManagedObjectModel {
 extension NSManagedObjectModel {
     
     //NOTE: this should be cached for performance
-    open var entitiesByClassName: [String: NSEntityDescription] {
+    public var entitiesByClassName: [String: NSEntityDescription] {
         
         get {
             
@@ -50,12 +50,12 @@ extension NSManagedObjectModel {
         }
     }
     
-    open func entity(byClassName entityClassName: String) -> NSEntityDescription? {
+    public func entity(byClassName entityClassName: String) -> NSEntityDescription? {
         
         return self.entitiesByClassName[entityClassName]
     }
     
-    open func entity<C>(byClass entityClass: C.Type) -> NSEntityDescription? where C: NSManagedObject {
+    public func entity<C>(byClass entityClass: C.Type) -> NSEntityDescription? where C: NSManagedObject {
         
         return self.entity(byClassName: String(reflecting: entityClass))
     }
